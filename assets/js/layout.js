@@ -18,7 +18,7 @@ const NAV_LINKS = [
 
 const LOGO_MARK =
   '<img src="assets/img/codelaine-logo.webp" alt="لوگوی کدلاین" width="46" height="46">' +
-  '<span class="logo__text">CODELAINE<small>پوشاک مردانه</small></span>';
+  '<span class="logo__text">CODELAINE<small>توسعهٔ وب و ربات</small></span>';
 
 const HEADER_HTML =
   '<div class="topbar">ارسال رایگان برای خرید بالای ۵ میلیون تومان — کد تخفیف اولین خرید <b>CODE10</b></div>' +
@@ -63,7 +63,7 @@ const FOOTER_HTML =
   '<div class="footer__grid">' +
   "<div>" +
   '<a class="logo" href="index.html" aria-label="کدلاین">' + LOGO_MARK + "</a>" +
-  '<p class="footer__about">کدلاین یک برند مستقل پوشاک مردانه است؛ با تمرکز بر پارچه‌های طبیعی، برش‌های ساده و تولید داخلی. این فروشگاه به‌عنوان نمونه‌کار طراحی و توسعهٔ وب ساخته شده است.</p>' +
+  '<p class="footer__about">کدلاین یک استودیوی برنامه‌نویسی است که ربات و سایت اختصاصی می‌سازد. این فروشگاه هم فقط به‌عنوان نمونه‌کار طراحی و توسعهٔ وب ساخته شده است.</p>' +
   '<div class="socials">' +
   '<a href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener" aria-label="اینستاگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>' +
   '<a href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener" aria-label="ربات تلگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.9 11.2c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.7 5.2c.2.7 1.1.8 1.6.3l2.4-2.4 4.5 3.3c.6.4 1.4.1 1.6-.6l3-14.2c.2-.8-.6-1.5-1.3-1.5Z"/><path d="m7.5 14.4 10-7.4-7.3 8.1"/></svg></a>' +
