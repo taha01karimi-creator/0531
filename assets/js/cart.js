@@ -132,8 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
       couponMsg.textContent = "کد «" + coupon + "» فعال است: " + COUPONS[coupon].label;
     } else {
       couponRow.hidden = true;
-      couponMsg.textContent = "";
-      couponMsg.classList.remove("is-error");
+      // پیام خطای کد نامعتبر باید بعد از بازمحاسبهٔ جمع باقی بماند
+      if (!couponMsg.classList.contains("is-error")) {
+        couponMsg.textContent = "";
+      }
     }
   }
 
@@ -188,6 +190,10 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ---------- کد تخفیف ---------- */
 
   document.querySelector("[data-coupon-apply]").addEventListener("click", applyCoupon);
+  couponInput.addEventListener("input", function () {
+    couponMsg.classList.remove("is-error");
+    couponMsg.textContent = "";
+  });
   couponInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();

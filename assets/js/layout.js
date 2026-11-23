@@ -84,9 +84,9 @@ const FOOTER_HTML =
   '<ul class="footer__list">' +
   '<li><a href="shop.html">راهنمای خرید</a></li>' +
   '<li><a href="cart.html">سبد خرید</a></li>' +
-  '<li><a href="#">شرایط بازگشت کالا</a></li>' +
-  '<li><a href="#">سوالات متداول</a></li>' +
-  '<li><a href="#">حریم خصوصی</a></li>' +
+        '<li><span>شرایط بازگشت کالا</span></li>' +
+      '<li><span>سوالات متداول</span></li>' +
+      '<li><span>حریم خصوصی</span></li>' +
   "</ul>" +
   "</div>" +
   "<div>" +
