@@ -3684,6 +3684,206 @@ html.motion-on .media-anim.is-ready {
   }
 }
 
+/* --- صفحهٔ درباره --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.about-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.about-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  padding: 26px;
+}
+
+.about-card h2 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.about-card h3 {
+  font-size: 15px;
+  margin: 18px 0 8px;
+}
+
+.about-card p {
+  color: var(--ink-3);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.about-list {
+  margin: 12px 0 0;
+  padding-inline-start: 18px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+.about-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--bone);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.about-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+/* --- راهنمای خرید --- */
+.help-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 40px 0 64px;
+  align-items: start;
+}
+
+.help-nav {
+  position: sticky;
+  top: 20px;
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.help-nav a {
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.help-nav a:hover {
+  background: var(--bone);
+  color: var(--ink);
+}
+
+.help-body {
+  display: grid;
+  gap: 36px;
+}
+
+.help-section h2 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.help-section h3 {
+  font-size: 15px;
+  margin: 18px 0 8px;
+}
+
+.help-section p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-3);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.size-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 420px;
+}
+
+.size-table th,
+.size-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.size-table th {
+  background: var(--bone);
+  font-weight: 700;
+}
+
+.faq {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.faq p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* --- 404 --- */
+.notfound {
+  text-align: center;
+  padding: 80px 0 100px;
+}
+
+.notfound__code {
+  display: block;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 800;
+  color: var(--accent-soft);
+  line-height: 1;
+}
+
+.notfound h1 {
+  font-size: 26px;
+  margin: 10px 0 8px;
+}
+
+.notfound p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.notfound .about-cta {
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .about-grid,
+  .about-grid--three {
+    grid-template-columns: 1fr;
+  }
+
+  .help-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 24px;
+  }
+
+  .help-nav {
+    position: static;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.motion-on [data-reveal],
   html.motion-on .media-anim {

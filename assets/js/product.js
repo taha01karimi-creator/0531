@@ -29,6 +29,21 @@ whenCatalogReady(function () {
   const crumb = document.querySelector("[data-crumb-product]");
   if (crumb) crumb.textContent = product.name;
 
+  /* داده‌ی ساختاریافته برای موتور جستجو */
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: [product.images[0]],
+    description: product.desc,
+    category: categoryTitle(product.category),
+    brand: { "@type": "Brand", name: "کدلاین" }
+  };
+  const schemaScript = document.createElement("script");
+  schemaScript.type = "application/ld+json";
+  schemaScript.textContent = JSON.stringify(schema);
+  document.head.appendChild(schemaScript);
+
   const colorOptions = product.colors
     .map(function (key) {
       const info = COLORS[key];
@@ -44,6 +59,8 @@ whenCatalogReady(function () {
         '" data-size="' + item + '">' + item + "</button>";
     })
     .join("");
+
+  const sizeGuide = buildSizeGuide(product);
 
   const perks = [
     {
@@ -99,15 +116,7 @@ whenCatalogReady(function () {
     '<div class="option">' +
     '<div class="option__head"><span>سایز: <b data-size-name>' + size + "</b></span><span>راهنما در پایین</span></div>" +
     '<div class="size-list" data-sizes>' + sizeOptions + "</div>" +
-    '<details class="size-guide">' +
-    "<summary>جدول اندازه‌ها (سانتی‌متر)</summary>" +
-    "<table><thead><tr><th>سایز</th><th>دور سینه</th><th>دور کمر</th><th>قد</th></tr></thead><tbody>" +
-    "<tr><td>S</td><td>۹۶</td><td>۸۲</td><td>۶۶</td></tr>" +
-    "<tr><td>M</td><td>۱۰۲</td><td>۸۸</td><td>۶۸</td></tr>" +
-    "<tr><td>L</td><td>۱۰۸</td><td>۹۴</td><td>۷۰</td></tr>" +
-    "<tr><td>XL</td><td>۱۱۴</td><td>۱۰۰</td><td>۷۲</td></tr>" +
-    "<tr><td>XXL</td><td>۱۲۰</td><td>۱۰۶</td><td>۷۴</td></tr>" +
-    "</tbody></table></details>" +
+    sizeGuide +
     "</div>" +
 
     '<div class="option">' +
@@ -289,3 +298,69 @@ whenCatalogReady(function () {
 
   related.innerHTML = sameCategory.concat(rest).slice(0, 4).map(productCard).join("");
 });
+
+/* جدول اندازهٔ متناسب با نوع محصول (بچگانه، شلوار یا بالاتنه) */
+function buildSizeGuide(product) {
+  const sizes = product.sizes || [];
+  if (!sizes.length || sizes[0] === "فری‌سایز") return "";
+
+  const isKids = sizes.some(function (item) { return item.indexOf("سال") !== -1; });
+  const isNumeric = sizes.some(function (item) { return /^\d+$/.test(item); });
+
+  let head = "";
+  let rows = "";
+
+  if (isKids) {
+    head = "<tr><th>سایز</th><th>قد پیشنهادی</th><th>دور سینه</th><th>دور کمر</th></tr>";
+    const kidRows = [
+      ["۴ سال", "۱۰۴", "۵۶", "۵۴"],
+      ["۶ سال", "۱۱۶", "۶۰", "۵۶"],
+      ["۸ سال", "۱۲۸", "۶۴", "۵۸"],
+      ["۱۰ سال", "۱۴۰", "۶۸", "۶۰"]
+    ];
+    rows = kidRows
+      .filter(function (row) { return sizes.indexOf(row[0]) !== -1; })
+      .map(function (row) {
+        return "<tr><td>" + row.join("</td><td>") + "</td></tr>";
+      })
+      .join("");
+  } else if (isNumeric) {
+    head = "<tr><th>سایز</th><th>دور کمر</th><th>دور باسن</th><th>قد شلوار</th></tr>";
+    const pantRows = [
+      ["30", "۷۶", "۹۴", "۱۰۰"],
+      ["32", "۸۱", "۹۸", "۱۰۲"],
+      ["34", "۸۶", "۱۰۲", "۱۰۴"],
+      ["36", "۹۱", "۱۰۶", "۱۰۶"],
+      ["38", "۹۶", "۱۱۰", "۱۰۸"]
+    ];
+    rows = pantRows
+      .filter(function (row) { return sizes.indexOf(row[0]) !== -1; })
+      .map(function (row) {
+        return "<tr><td>" + row.join("</td><td>") + "</td></tr>";
+      })
+      .join("");
+  } else {
+    head = "<tr><th>سایز</th><th>دور سینه</th><th>دور کمر</th><th>قد</th></tr>";
+    const adultRows = [
+      ["S", "۹۶", "۸۲", "۶۶"],
+      ["M", "۱۰۲", "۸۸", "۶۸"],
+      ["L", "۱۰۸", "۹۴", "۷۰"],
+      ["XL", "۱۱۴", "۱۰۰", "۷۲"],
+      ["XXL", "۱۲۰", "۱۰۶", "۷۴"]
+    ];
+    rows = adultRows
+      .filter(function (row) { return sizes.indexOf(row[0]) !== -1; })
+      .map(function (row) {
+        return "<tr><td>" + row.join("</td><td>") + "</td></tr>";
+      })
+      .join("");
+  }
+
+  if (!rows) return "";
+
+  return (
+    '<details class="size-guide">' +
+    "<summary>جدول اندازه‌ها (سانتی‌متر)</summary>" +
+    "<table><thead>" + head + "</thead><tbody>" + rows + "</tbody></table></details>"
+  );
+}

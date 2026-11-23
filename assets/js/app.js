@@ -247,7 +247,7 @@ function productCard(product) {
     '<article class="pcard" data-id="' + product.id + '">' +
     '<div class="pcard__media">' +
     '<a href="product.html?id=' + product.id + '" aria-label="' + product.name + '">' +
-    '<img src="' + product.images[0] + '" alt="' + product.name + '" loading="lazy">' +
+    '<img src="' + product.images[0] + '" alt="' + product.name + '" loading="lazy" width="640" height="800" decoding="async">' +
     "</a>" +
     badge +
     '<button class="pcard__wish' + (isWished(product.id) ? " is-active" : "") +
@@ -337,7 +337,7 @@ function initHeader() {
         .map(function (item) {
           return (
             '<a class="search__item" href="product.html?id=' + item.id + '">' +
-            '<img src="' + item.images[0] + '" alt="' + item.name + '">' +
+            '<img src="' + item.images[0] + '" alt="' + item.name + '" width="40" height="50" decoding="async">' +
             "<div><strong>" + item.name + "</strong><span>" +
             categoryTitle(item.category) + " · " + toman(item.price) +
             "</span></div></a>"

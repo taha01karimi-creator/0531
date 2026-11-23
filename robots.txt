@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://taha01karimi-creator.github.io/0531/sitemap.xml

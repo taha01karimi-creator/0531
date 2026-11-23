@@ -80,18 +80,19 @@ const FOOTER_HTML =
   '<li><a href="shop.html?cat=polo">پولوشرت</a></li>' +
   '<li><a href="shop.html?cat=shirt">پیراهن</a></li>' +
   '<li><a href="shop.html?cat=outer">پالتو و کاپشن</a></li>' +
+  '<li><a href="about.html">دربارهٔ نمونه‌کار</a></li>' +
   "</ul>" +
   "</div>" +
   "<div>" +
   '<h3 class="footer__title">خدمات مشتریان</h3>' +
   '<ul class="footer__list">' +
-  '<li><a href="shop.html">راهنمای خرید</a></li>' +
+  '<li><a href="help.html">راهنمای خرید</a></li>' +
   '<li><a href="contact.html">تماس با ما</a></li>' +
+  '<li><a href="help.html#size">راهنمای سایز</a></li>' +
   '<li><a href="cart.html">سبد خرید</a></li>' +
-  '<li><span>شرایط بازگشت کالا</span></li>' +
-  '<li><span>سوالات متداول</span></li>' +
-  '<li><span>حریم خصوصی</span></li>' +
-  '<li><a href="admin.html">پنل مدیریت</a></li>' +
+  '<li><a href="help.html#returns">شرایط بازگشت کالا</a></li>' +
+  '<li><a href="help.html#faq">سوالات متداول</a></li>' +
+  '<li><a href="help.html#privacy">حریم خصوصی</a></li>' +
   "</ul>" +
   "</div>" +
   "<div>" +
