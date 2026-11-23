@@ -56,8 +56,10 @@
   --danger: #b02a2a;
   --green: #39765a;
   --white: #ffffff;
-  --radius: 2px;
-  --radius-md: 4px;
+  --radius: 6px;
+  --radius-md: 10px;
+  --radius-img: 20px;
+  --radius-pill: 999px;
   --container: 1280px;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --display: 800;
@@ -3281,14 +3283,14 @@ svg {
 
 /* کارت محصول */
 .pcard__badge {
-  background: var(--accent);
+  background: var(--ink);
   color: #fff;
 }
 
 .pcard__badge--new {
   background: #fff;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--ink);
+  border: 1px solid var(--ink);
 }
 
 .pcard__wish {
@@ -3497,5 +3499,124 @@ svg {
 @media (max-width: 760px) {
   .feature {
     border-bottom: 1px solid var(--line);
+  }
+}
+
+/* ============================================
+   بهبود ظاهر (نسخهٔ ۳): گوشه‌های گردتر، تخفیف مشکی، حرکت
+   ============================================ */
+
+/* --- گوشه‌های گردتر برای تصاویر و رسانه‌ها --- */
+.pcard__media,
+.cat,
+.hero__media,
+.gallery__main,
+.cart-row__img,
+.search__item img,
+.logo img,
+.credit__logo {
+  border-radius: var(--radius-img);
+}
+
+.cat,
+.gallery__main,
+.cart-row__img,
+.search__item {
+  overflow: hidden;
+}
+
+.gallery__thumb {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.hero__media::after {
+  border-radius: calc(var(--radius-img) - 6px);
+}
+
+.pcard__badge {
+  border-start-start-radius: var(--radius-img);
+}
+
+.pcard__wish {
+  border-radius: 50%;
+}
+
+/* --- تخفیف: مشکی به‌جای قرمز --- */
+.save-badge {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-pill);
+  padding: 4px 11px;
+}
+
+.summary__row--discount b,
+.summary__row--discount span {
+  color: var(--ink);
+}
+
+.summary__row--discount b {
+  font-weight: 700;
+}
+
+/* --- تصویر هیرو با رنگ طبیعی‌تر (روشن‌تر و خنثی) --- */
+.hero__media img {
+  filter: none;
+  image-rendering: auto;
+}
+
+/* --- حرکت‌های ظریف روی کارت‌ها و دکمه‌ها --- */
+.pcard {
+  transition: transform 0.45s var(--ease);
+}
+
+.pcard:hover {
+  transform: translateY(-4px);
+}
+
+.cat img,
+.pcard__media img,
+.hero__media img {
+  backface-visibility: hidden;
+}
+
+.btn,
+.pcard__add {
+  transition: background 0.25s var(--ease), color 0.25s var(--ease),
+    transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* --- انیمیشن ورود (فقط وقتی JS فعال است) --- */
+html.motion-on [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease) var(--reveal-delay, 0ms),
+    transform 0.8s var(--ease) var(--reveal-delay, 0ms);
+}
+
+html.motion-on [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+html.motion-on .media-anim {
+  opacity: 0;
+}
+
+html.motion-on .media-anim.is-ready {
+  opacity: 1;
+  transition: opacity 0.85s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion-on [data-reveal],
+  html.motion-on .media-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
