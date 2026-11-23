@@ -1,0 +1,14 @@
+{
+  "shipping_cost": 49000,
+  "free_shipping_from": 5000000,
+  "coupons": {
+    "CODE10": {
+      "percent": 10,
+      "label": "ده درصد تخفیف"
+    },
+    "WELCOME": {
+      "percent": 15,
+      "label": "پانزده درصد تخفیف"
+    }
+  }
+}

@@ -2,7 +2,7 @@
    صفحه فروشگاه: فیلتر، مرتب‌سازی و نوع نمایش
    ============================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
+whenCatalogReady(function () {
   const grid = document.querySelector("[data-products]");
   if (!grid) return;
 

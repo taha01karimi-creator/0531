@@ -2,7 +2,7 @@
    صفحه محصول: گالری، انتخاب رنگ و سایز، تب‌ها
    ============================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
+whenCatalogReady(function () {
   const root = document.querySelector("[data-product]");
   if (!root) return;
 

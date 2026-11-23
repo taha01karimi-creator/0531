@@ -404,4 +404,4 @@ function initHeader() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initHeader);
+whenCatalogReady(initHeader);

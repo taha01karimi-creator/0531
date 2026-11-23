@@ -3,7 +3,7 @@
    و ثبت سفارش
    ============================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
+whenCatalogReady(function () {
   const listEl = document.querySelector("[data-cart-list]");
   if (!listEl) return;
 
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
     field.classList.toggle("has-error", hasError);
   }
 
-  form.addEventListener("submit", function (event) {
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const nameField = form.querySelector('[name="name"]').closest(".field");
@@ -294,9 +294,44 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    /* شمارهٔ سفارش نمونه */
-    const orderCode = "RG-" + Math.floor(1000 + Math.random() * 9000);
-    const total = totalEl.textContent;
+    /* اگر بک‌اند در حال اجرا باشد سفارش روی سرور ثبت می‌شود؛ وگرنه نمونهٔ محلی */
+    let orderCode = "RG-" + Math.floor(1000 + Math.random() * 9000);
+    let total = totalEl.textContent;
+
+    if (window.ShopAPI && ShopAPI.available()) {
+      const submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.label = submitBtn.textContent;
+        submitBtn.textContent = "در حال ثبت…";
+      }
+
+      const result = await ShopAPI.placeOrder({
+        items: cartDetailed().map(function (item) {
+          return {
+            product_id: item.product.id,
+            size: item.line.size,
+            color: item.line.color,
+            qty: item.line.qty
+          };
+        }),
+        customer: { name: name, phone: phone, city: city, address: address },
+        coupon: coupon
+      });
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        if (submitBtn.dataset.label) submitBtn.textContent = submitBtn.dataset.label;
+      }
+
+      if (!result.ok) {
+        showToast(result.error || "ثبت سفارش انجام نشد؛ دوباره تلاش کنید");
+        return;
+      }
+
+      orderCode = result.order.code;
+      total = toman(result.order.total);
+    }
 
     modalBox.innerHTML =
       '<div class="order-success">' +

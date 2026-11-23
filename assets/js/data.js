@@ -623,5 +623,19 @@ const COUPONS = {
   WELCOME: { percent: 15, label: "پانزده درصد تخفیف" }
 };
 
-const SHIPPING_COST = 49000;
-const FREE_SHIPPING_FROM = 5000000;
+/* با اجرای بک‌اند، این مقدارها از API به‌روز می‌شوند (assets/js/api.js) */
+let SHIPPING_COST = 49000;
+let FREE_SHIPPING_FROM = 5000000;
+
+/* وقتی بک‌اند در دسترس باشد، صفحه‌ها بعد از خواندن کاتالوگ شروع می‌شوند؛
+   در نسخهٔ استاتیک این تابع فوراً اجرا می‌شود. */
+function whenCatalogReady(callback) {
+  const ready = window.CATALOG_READY || Promise.resolve();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      ready.then(callback);
+    });
+  } else {
+    ready.then(callback);
+  }
+}

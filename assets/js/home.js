@@ -2,7 +2,7 @@
    صفحه اصلی: اسلایدر، تب محصولات، شمارش معکوس
    ============================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
+whenCatalogReady(function () {
   initHeroSlider();
   renderNewProducts();
   renderSaleProducts();
