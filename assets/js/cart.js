@@ -22,6 +22,7 @@ whenCatalogReady(function () {
   const couponAmountEl = document.querySelector("[data-coupon-amount]");
 
   const modal = document.querySelector("[data-checkout-modal]");
+  const demoModal = document.querySelector("[data-demo-modal]");
   const form = document.querySelector("[data-checkout-form]");
   const modalBox = modal.querySelector(".modal__box");
 
@@ -238,8 +239,30 @@ whenCatalogReady(function () {
     document.body.style.overflow = "";
   }
 
+  /* پیش از باز شدن فرم، پیام «این نمونه‌کار است» نمایش داده می‌شود */
+  function openDemoNotice() {
+    demoModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDemoNotice() {
+    demoModal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
   document.querySelector("[data-checkout]").addEventListener("click", function () {
     if (!cartDetailed().length) return;
+    openDemoNotice();
+  });
+
+  demoModal.addEventListener("click", function (event) {
+    if (event.target === demoModal) closeDemoNotice();
+  });
+
+  demoModal.querySelector("[data-demo-back]").addEventListener("click", closeDemoNotice);
+
+  demoModal.querySelector("[data-demo-continue]").addEventListener("click", function () {
+    closeDemoNotice();
     if (coupon) couponInput.value = coupon;
     openModal();
     setTimeout(function () {
@@ -255,9 +278,9 @@ whenCatalogReady(function () {
   });
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
+    if (event.key !== "Escape") return;
+    if (demoModal.classList.contains("is-open")) closeDemoNotice();
+    else if (modal.classList.contains("is-open")) closeModal();
   });
 
   /* اعتبارسنجی ساده */
@@ -294,11 +317,12 @@ whenCatalogReady(function () {
       return;
     }
 
-    /* اگر بک‌اند در حال اجرا باشد سفارش روی سرور ثبت می‌شود؛ وگرنه نمونهٔ محلی */
+    /* این فروشگاه نمونه‌کار است؛ ثبت سفارش واقعی انجام نمی‌شود. */
+    const ALLOW_REAL_ORDERS = false;
     let orderCode = "RG-" + Math.floor(1000 + Math.random() * 9000);
     let total = totalEl.textContent;
 
-    if (window.ShopAPI && ShopAPI.available()) {
+    if (ALLOW_REAL_ORDERS && window.ShopAPI && ShopAPI.available()) {
       const submitBtn = form.querySelector('[type="submit"]');
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -338,10 +362,11 @@ whenCatalogReady(function () {
       '<div class="order-success__icon">' +
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>' +
       "</div>" +
-      "<h3>سفارش شما ثبت شد</h3>" +
-      "<p>شمارهٔ پیگیری سفارش:</p>" +
+      "<h3>سفارش نمایشی ثبت شد</h3>" +
+      "<p>این سفارش واقعی نیست و برای هیچ‌کس ارسال نمی‌شود؛ فقط جریان خرید نمونه‌کار را نشان می‌دهد.</p>" +
+      "<p>شمارهٔ پیگیری نمایشی:</p>" +
       "<p><code>" + orderCode + "</code></p>" +
-      "<p>" + name + " عزیز، مبلغ " + total + " ثبت شد. برای هماهنگی ارسال، از طریق پیج اینستاگرام یا ربات تلگرام با ما در تماس باشید.</p>" +
+      "<p>" + name + " عزیز، مبلغ نمایشی " + total + " ثبت شد و هیچ پرداختی انجام نشده است.</p>" +
       '<a class="btn btn--primary" style="margin-top:16px" href="shop.html">ادامهٔ خرید</a>' +
       "</div>";
 
