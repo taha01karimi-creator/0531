@@ -186,10 +186,16 @@ def _seed_admin(connection: sqlite3.Connection, app) -> None:
     password = app.config["ADMIN_PASSWORD"]
     if not password:
         password = secrets.token_urlsafe(9)
+        # رمز هرگز در لاگ/کنسول چاپ نمی‌شود؛ فقط در فایل خصوصی ذخیره می‌شود
+        password_file = app.config["DATA_DIR"] / "admin_password.txt"
+        password_file.write_text(password, encoding="utf-8")
+        try:
+            password_file.chmod(0o600)
+        except OSError:
+            pass
         app.logger.warning(
-            "رمز مدیر ساخته شد — نام کاربری: %s / رمز: %s (برای تغییر، ADMIN_PASSWORD را ست کنید)",
-            app.config["ADMIN_USERNAME"],
-            password,
+            "رمز مدیر ساخته شد و در %s ذخیره شد (برای تغییر، ADMIN_PASSWORD را ست کنید)",
+            password_file,
         )
     connection.execute(
         "INSERT INTO admins (username, password_hash, created_at) VALUES (?,?,?)",

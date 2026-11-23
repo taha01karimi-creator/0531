@@ -87,8 +87,8 @@ const FOOTER_HTML =
   '<a class="logo" href="index.html" aria-label="کدلاین">' + LOGO_MARK + "</a>" +
   '<p class="footer__about">کدلاین یک استودیوی برنامه‌نویسی است که ربات و سایت اختصاصی می‌سازد. این فروشگاه هم فقط به‌عنوان نمونه‌کار طراحی و توسعهٔ وب ساخته شده است.</p>' +
   '<div class="socials">' +
-  '<a href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener" aria-label="اینستاگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>' +
-  '<a href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener" aria-label="ربات تلگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.9 11.2c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.7 5.2c.2.7 1.1.8 1.6.3l2.4-2.4 4.5 3.3c.6.4 1.4.1 1.6-.6l3-14.2c.2-.8-.6-1.5-1.3-1.5Z"/><path d="m7.5 14.4 10-7.4-7.3 8.1"/></svg></a>' +
+  '<a href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>' +
+  '<a href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener noreferrer" aria-label="ربات تلگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.9 11.2c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.7 5.2c.2.7 1.1.8 1.6.3l2.4-2.4 4.5 3.3c.6.4 1.4.1 1.6-.6l3-14.2c.2-.8-.6-1.5-1.3-1.5Z"/><path d="m7.5 14.4 10-7.4-7.3 8.1"/></svg></a>' +
   "</div>" +
   "</div>" +
   "<div>" +
@@ -119,11 +119,11 @@ const FOOTER_HTML =
   "<div>" +
   '<h3 class="footer__title">ارتباط با ما</h3>' +
   '<p class="footer__about" style="margin-top:0">سفارش، هماهنگی و پاسخ به سؤال‌ها فقط از طریق پیج اینستاگرام یا ربات تلگرام انجام می‌شود.</p>' +
-  '<a class="footer__insta" href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener">' +
+  '<a class="footer__insta" href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener noreferrer">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>' +
   '<span dir="ltr">@codelaine_dev</span>' +
   "</a>" +
-  '<a class="footer__insta" href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener">' +
+  '<a class="footer__insta" href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener noreferrer">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.9 11.2c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.7 5.2c.2.7 1.1.8 1.6.3l2.4-2.4 4.5 3.3c.6.4 1.4.1 1.6-.6l3-14.2c.2-.8-.6-1.5-1.3-1.5Z"/><path d="m7.5 14.4 10-7.4-7.3 8.1"/></svg>' +
   '<span dir="ltr">@TiTi_02460_bot</span>' +
   "</a>" +
@@ -135,10 +135,10 @@ const FOOTER_HTML =
   "<strong>طراحی و توسعه: کدلاین</strong>" +
   "<span>اگر به ساخت فروشگاه یا سایت اختصاصی نیاز دارید، از طریق پیج اینستاگرام یا ربات تلگرام با ما در تماس باشید.</span>" +
   "</div>" +
-  '<a class="credit__btn" href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener">' +
+  '<a class="credit__btn" href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener noreferrer">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>' +
   "صفحهٔ کدلاین در اینستاگرام</a>" +
-  '<a class="credit__btn" href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener">' +
+  '<a class="credit__btn" href="https://t.me/TiTi_02460_bot" target="_blank" rel="noopener noreferrer">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.9 11.2c-.8.3-.8 1.4 0 1.7l4.6 1.5 1.7 5.2c.2.7 1.1.8 1.6.3l2.4-2.4 4.5 3.3c.6.4 1.4.1 1.6-.6l3-14.2c.2-.8-.6-1.5-1.3-1.5Z"/><path d="m7.5 14.4 10-7.4-7.3 8.1"/></svg>' +
   "ربات کدلاین در تلگرام</a>" +
   "</div>" +

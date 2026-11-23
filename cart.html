@@ -2,6 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سبد خرید | کدلاین</title>
   <meta name="description" content="سبد خرید فروشگاه پوشاک مردانهٔ کدلاین؛ بررسی سفارش، اعمال کد تخفیف و ثبت اطلاعات ارسال.">
@@ -17,7 +18,7 @@
   <meta property="og:url" content="https://taha01karimi-creator.github.io/0531/cart.html">
   <meta property="og:image" content="https://taha01karimi-creator.github.io/0531/assets/img/hero-3.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="assets/css/style.css?v=8">
+  <link rel="stylesheet" href="assets/css/style.css?v=9">
 </head>
 <body data-page="cart">
 
@@ -117,9 +118,16 @@
       </div>
 
       <form data-checkout-form novalidate>
+        <div class="checkout-demo">
+          <b>این یک نمونه‌کار است</b>
+          <p>
+            این اطلاعات فقط در همین مرورگر می‌ماند؛ هیچ سفارشی ثبت نمی‌شود،
+            به هیچ‌کس ارسال نمی‌شود و امنیت اطلاعات واقعی در این نمونه‌کار بررسی نمی‌شود.
+          </p>
+        </div>
         <div class="field">
           <label for="checkout-name">نام و نام خانوادگی</label>
-          <input id="checkout-name" name="name" type="text" placeholder="مثلاً سینا احمدی">
+          <input id="checkout-name" name="name" type="text" placeholder="نام و نام خانوادگی">
           <span class="error">نام را کامل وارد کنید.</span>
         </div>
         <div class="field">
@@ -137,7 +145,7 @@
           <textarea id="checkout-address" name="address" placeholder="خیابان، کوچه، پلاک و واحد"></textarea>
           <span class="error">نشانی باید حداقل ۱۰ نویسه باشد.</span>
         </div>
-        <button class="btn btn--primary btn--block" type="submit">ثبت سفارش</button>
+        <button class="btn btn--primary btn--block" type="submit">ثبت سفارش نمایشی</button>
       </form>
     </div>
   </div>
@@ -146,9 +154,9 @@
 
   <script src="assets/js/data.js?v=6"></script>
   <script src="assets/js/api.js?v=6"></script>
-  <script src="assets/js/layout.js?v=7"></script>
+  <script src="assets/js/layout.js?v=8"></script>
   <script src="assets/js/app.js?v=7"></script>
   <script src="assets/js/motion.js?v=7"></script>
-  <script src="assets/js/cart.js?v=8"></script>
+  <script src="assets/js/cart.js?v=9"></script>
 </body>
 </html>

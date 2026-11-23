@@ -3992,3 +3992,23 @@ html.motion-on .media-anim.is-ready {
   text-align: center;
   line-height: 1.9;
 }
+
+/* هشدار ثابت داخل فرم ثبت سفارش نمونه‌کار */
+.checkout-demo {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border: 1px solid #e2c9a8;
+  border-radius: 14px;
+  background: #fdf6ea;
+  color: #6b4a28;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.checkout-demo b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.checkout-demo p {
+  margin: 0;
+}

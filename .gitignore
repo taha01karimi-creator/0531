@@ -13,3 +13,6 @@ venv/
 # سیستم‌عامل
 .DS_Store
 Thumbs.db
+
+# رمز ساخته‌شدهٔ مدیر (خصوصی)
+backend/data/admin_password.txt
