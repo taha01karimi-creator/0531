@@ -24,7 +24,6 @@ const LOGO_MARK =
   '<span class="logo__text">CODELAINE<small>توسعهٔ وب و ربات</small></span>';
 
 const HEADER_HTML =
-  '<div class="topbar">ارسال رایگان برای خرید بالای ۵ میلیون تومان — کد تخفیف اولین خرید <b>CODE10</b></div>' +
   '<header class="header">' +
   '<div class="container header__inner">' +
   '<a class="logo" href="index.html" aria-label="کدلاین، صفحه اصلی">' + LOGO_MARK + "</a>" +
