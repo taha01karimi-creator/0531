@@ -42,6 +42,38 @@ function productById(id) {
   });
 }
 
+/* یکسان‌سازی متن جستجو: حروف عربی، نیم‌فاصله، اعداد فارسی و علائم */
+function searchNormalize(value) {
+  var faDigits = "۰۱۲۳۴۵۶۷۸۹";
+  return String(value == null ? "" : value)
+    .replace(/[يى]/g, "ی")
+    .replace(/ك/g, "ک")
+    .replace(/[ۀة]/g, "ه")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/[\u064b-\u065f\u0670]/g, "")
+    .replace(/[\u200c\u200e\u200f\u0640]/g, " ")
+    .replace(/[۰-۹]/g, function (d) { return String(faDigits.indexOf(d)); })
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+/* جستجو روی نام، دسته، جنس پارچه، رنگ و توضیح محصول؛
+   همهٔ کلمه‌های عبارت باید پیدا شوند. */
+function matchesSearch(item, query) {
+  var tokens = searchNormalize(query).split(" ").filter(Boolean);
+  if (!tokens.length) return true;
+
+  var colorNames = (item.colors || [])
+    .map(function (key) { return COLORS[key] ? COLORS[key].name : ""; })
+    .join(" ");
+  var text = searchNormalize(
+    [item.name, categoryTitle(item.category), item.material, item.fit, item.desc, colorNames].join(" ")
+  );
+  return tokens.every(function (token) { return text.indexOf(token) !== -1; });
+}
+
 function categoryTitle(id) {
   const found = CATEGORIES.find(function (cat) {
     return cat.id === id;
@@ -321,29 +353,32 @@ function initHeader() {
       }
 
       const matches = PRODUCTS.filter(function (item) {
-        return (
-          item.name.indexOf(term) !== -1 ||
-          categoryTitle(item.category).indexOf(term) !== -1
-        );
-      }).slice(0, 6);
+        return matchesSearch(item, term);
+      });
+      const shown = matches.slice(0, 6);
 
       if (!matches.length) {
         results.innerHTML =
-          '<p class="search__empty">محصولی با این عبارت پیدا نشد.</p>';
+          '<p class="search__empty">محصولی با این عبارت پیدا نشد. نام محصول یا دسته را جدا بنویسید؛ مثلاً «کاپشن» یا «شلوار جین».</p>';
         return;
       }
 
-      results.innerHTML = matches
-        .map(function (item) {
-          return (
-            '<a class="search__item" href="product.html?id=' + item.id + '">' +
-            '<img src="' + item.images[0] + '" alt="' + item.name + '" width="40" height="50" decoding="async">' +
-            "<div><strong>" + item.name + "</strong><span>" +
-            categoryTitle(item.category) + " · " + toman(item.price) +
-            "</span></div></a>"
-          );
-        })
-        .join("");
+      results.innerHTML =
+        shown
+          .map(function (item) {
+            return (
+              '<a class="search__item" href="product.html?id=' + item.id + '">' +
+              '<img src="' + item.images[0] + '" alt="' + item.name + '" width="40" height="50" decoding="async">' +
+              "<div><strong>" + item.name + "</strong><span>" +
+              categoryTitle(item.category) + " · " + toman(item.price) +
+              "</span></div></a>"
+            );
+          })
+          .join("") +
+        (matches.length > shown.length
+          ? '<a class="search__more" href="shop.html?q=' + encodeURIComponent(term) + '">مشاهدهٔ همهٔ ' +
+            faNum(matches.length) + " نتیجه</a>"
+          : "");
     };
 
     const openSearch = function () {

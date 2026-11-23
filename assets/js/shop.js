@@ -91,12 +91,7 @@ whenCatalogReady(function () {
     if (state.cats.size && !state.cats.has(product.category)) return false;
     if (state.maxPrice < 9000000 && product.price > state.maxPrice) return false;
     if (state.saleOnly && percentOff(product) === 0) return false;
-    if (
-      state.search &&
-      product.name.indexOf(state.search) === -1 &&
-      categoryTitle(product.category).indexOf(state.search) === -1
-    )
-      return false;
+    if (state.search && !matchesSearch(product, state.search)) return false;
 
     if (state.sizes.size) {
       const hasSize = product.sizes.some(function (size) {
@@ -155,6 +150,12 @@ whenCatalogReady(function () {
       titleEl.textContent = title;
       crumbEl.textContent = title;
       descEl.textContent = "محصولات دستهٔ «" + title + "»؛ همه با ارسال سریع و امکان بازگشت تا ۷ روز.";
+      document.title = title + " | کدلاین";
+    } else if (state.search) {
+      const title = "نتایج «" + state.search + "»";
+      titleEl.textContent = title;
+      crumbEl.textContent = title;
+      descEl.textContent = "محصولاتی که با عبارت جستجو هم‌خوانی دارند؛ برای محدودتر کردن، از فیلترها استفاده کنید.";
       document.title = title + " | کدلاین";
     } else {
       titleEl.textContent = "همهٔ محصولات";

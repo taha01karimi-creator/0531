@@ -6,6 +6,8 @@
 const NAV_LINKS = [
   { href: "index.html", label: "خانه", page: "home" },
   { href: "shop.html", label: "فروشگاه", page: "shop" },
+  { href: "shop.html?cat=women", label: "زنانه", page: "women" },
+  { href: "shop.html?cat=kids", label: "بچگانه", page: "kids" },
   { href: "shop.html?cat=tshirt", label: "تیشرت", page: "tshirt" },
   { href: "shop.html?cat=polo", label: "پولوشرت", page: "polo" },
   { href: "shop.html?cat=shirt", label: "پیراهن", page: "shirt" },
