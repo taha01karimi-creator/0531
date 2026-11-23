@@ -3945,3 +3945,50 @@ html.motion-on .media-anim.is-ready {
 .demo-notice .btn + .btn {
   margin-top: 10px;
 }
+
+/* ---------- فرم ورود با شمارهٔ موبایل ---------- */
+.header__account {
+  cursor: pointer;
+  background: none;
+  border: 1px solid transparent;
+  font: inherit;
+  color: inherit;
+}
+.account-box {
+  max-width: 420px;
+}
+.account-form {
+  padding: 4px 24px 26px;
+}
+.account-note {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+.account-form .field {
+  margin-bottom: 6px;
+}
+.account-form .field input {
+  direction: ltr;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: Arial, sans-serif;
+}
+.account-form .btn {
+  width: 100%;
+  margin-top: 6px;
+}
+.account-error {
+  min-height: 18px;
+  margin: 6px 0;
+  color: #b23a2f;
+  font-size: 12px;
+}
+.account-demo {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 11.5px;
+  text-align: center;
+  line-height: 1.9;
+}

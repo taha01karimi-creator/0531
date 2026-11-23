@@ -38,9 +38,9 @@ const HEADER_HTML =
   '<button class="icon-btn" data-search-toggle aria-label="جستجو" title="جستجو">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg>' +
   "</button>" +
-  '<a class="header__account" href="shop.html">' +
+  '<button class="header__account" type="button" data-account-open aria-label="ورود یا ثبت نام">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.8 20.5a7.4 7.4 0 0 1 14.4 0"/></svg>' +
-  "<span>ورود / عضویت</span></a>" +
+  '<span data-account-label>ورود / عضویت</span></button>' +
   '<a class="icon-btn" href="cart.html" aria-label="سبد خرید" title="سبد خرید">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7.5h12l1 12H5l1-12Z"/><path d="M9 10.5V6a3 3 0 0 1 6 0v4.5"/></svg>' +
   '<span class="cart-count" data-cart-count>۰</span></a>' +
@@ -59,6 +59,25 @@ const SEARCH_HTML =
   "</div>" +
   '<div class="search__results"></div>' +
   "</div></div>";
+
+const ACCOUNT_MODAL_HTML =
+  '<div class="modal account-modal" data-login-modal>' +
+  '<div class="modal__box account-box" role="dialog" aria-modal="true" aria-labelledby="accountTitle">' +
+  '<div class="modal__head"><h2 id="accountTitle">ورود | ثبت نام</h2>' +
+  '<button class="modal__close" type="button" data-login-close aria-label="بستن">' +
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+  "</button></div>" +
+  '<form class="account-form" data-login-form novalidate>' +
+  '<p class="account-note">برای ورود به حساب کاربری، شمارهٔ موبایل خود را وارد کنید.</p>' +
+  '<div class="field">' +
+  '<label for="accountPhone">شمارهٔ موبایل</label>' +
+  '<input id="accountPhone" name="phone" type="tel" inputmode="numeric" dir="ltr" maxlength="11" placeholder="09121234567" autocomplete="tel">' +
+  '<span class="error">شمارهٔ موبایل باید ۱۱ رقم و با ۰۹ شروع شود.</span>' +
+  "</div>" +
+  '<p class="account-error" data-login-error role="alert"></p>' +
+  '<button class="btn btn--primary btn--block" type="submit">ورود</button>' +
+  '<p class="account-demo">این یک نمونه‌کار است؛ پیامکی ارسال نمی‌شود و حسابی ساخته نمی‌شود.</p>' +
+  "</form></div></div>";
 
 const FOOTER_HTML =
   '<footer class="footer">' +
@@ -134,7 +153,7 @@ const FOOTER_HTML =
   const headerSlot = document.querySelector("[data-site-header]");
   const footerSlot = document.querySelector("[data-site-footer]");
 
-  if (headerSlot) headerSlot.innerHTML = HEADER_HTML + SEARCH_HTML;
+  if (headerSlot) headerSlot.innerHTML = HEADER_HTML + SEARCH_HTML + ACCOUNT_MODAL_HTML;
   if (footerSlot) footerSlot.innerHTML = FOOTER_HTML;
 
   const page = document.body.getAttribute("data-page");

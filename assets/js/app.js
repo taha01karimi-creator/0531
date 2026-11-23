@@ -437,6 +437,107 @@ function initHeader() {
       wishBtn.classList.toggle("is-active", active);
     }
   });
+
+  /* ---------- ورود نمایشی با شمارهٔ موبایل ---------- */
+
+  const ACCOUNT_KEY = "rega_account_phone";
+  const loginModal = document.querySelector("[data-login-modal]");
+  const loginForm = document.querySelector("[data-login-form]");
+  const phoneInput = document.querySelector("#accountPhone");
+  const loginError = document.querySelector("[data-login-error]");
+  const accountLabels = document.querySelectorAll("[data-account-label]");
+
+  function toLatinDigits(value) {
+    const fa = "۰۱۲۳۴۵۶۷۸۹";
+    const ar = "٠١٢٣٤٥٦٧٨٩";
+    return String(value).replace(/[۰-۹٠-٩]/g, function (ch) {
+      const index = fa.indexOf(ch);
+      return index > -1 ? String(index) : String(ar.indexOf(ch));
+    });
+  }
+
+  function phoneLabel(phone) {
+    return phone.slice(0, 4) + "***" + phone.slice(-2);
+  }
+
+  function refreshAccount() {
+    const saved = readStore(ACCOUNT_KEY, "");
+    accountLabels.forEach(function (el) {
+      el.textContent = saved ? phoneLabel(saved) : "ورود / عضویت";
+    });
+  }
+
+  function openLogin() {
+    if (!loginModal) return;
+    loginModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    if (loginError) loginError.textContent = "";
+    if (phoneInput) {
+      phoneInput.value = readStore(ACCOUNT_KEY, "");
+      setTimeout(function () {
+        phoneInput.focus();
+      }, 180);
+    }
+  }
+
+  function closeLogin() {
+    if (!loginModal) return;
+    loginModal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", function (event) {
+    if (event.target.closest("[data-account-open]")) {
+      openLogin();
+      return;
+    }
+    if (event.target.closest("[data-login-close]")) {
+      closeLogin();
+    }
+  });
+
+  if (loginModal) {
+    loginModal.addEventListener("click", function (event) {
+      if (event.target === loginModal) closeLogin();
+    });
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && loginModal && loginModal.classList.contains("is-open")) {
+      closeLogin();
+    }
+  });
+
+  if (phoneInput) {
+    /* ارقام فارسی/عربی همان لحظه به رقم عادی تبدیل می‌شوند */
+    phoneInput.addEventListener("input", function () {
+      phoneInput.value = toLatinDigits(phoneInput.value).replace(/[^0-9]/g, "").slice(0, 11);
+      if (loginError) loginError.textContent = "";
+      phoneInput.closest(".field").classList.remove("has-error");
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+      const valid = /^09\d{9}$/.test(phone);
+      if (phoneInput) phoneInput.closest(".field").classList.toggle("has-error", !valid);
+
+      if (!valid) {
+        if (loginError) loginError.textContent = "شمارهٔ موبایل باید ۱۱ رقم و با ۰۹ شروع شود.";
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+
+      writeStore(ACCOUNT_KEY, phone);
+      refreshAccount();
+      closeLogin();
+      showToast("خوش آمدید 👋");
+    });
+  }
+
+  refreshAccount();
 }
 
 whenCatalogReady(initHeader);
