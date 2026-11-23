@@ -1,10 +1,5 @@
-/* ============================================
-   CODELAINE STORE — استایل اصلی
-   طراحی اختصاصی: زمینهٔ سفید، لهجهٔ قرمز شرابی،
-   تایپوگرافی تحریریه‌ای و چیدمان نامتقارن
-   ============================================ */
 
-/* ---------- فونت وزیرمتن (داخل پروژه) ---------- */
+
 @font-face {
   font-family: "Vazirmatn";
   font-style: normal;
@@ -38,7 +33,6 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ---------- متغیرها ---------- */
 :root {
   --ink: #1b1714;
   --ink-soft: #3a332f;
@@ -65,7 +59,6 @@
   --display: 800;
 }
 
-/* ---------- ریست ---------- */
 *,
 *::before,
 *::after {
@@ -146,7 +139,6 @@ svg {
   padding: 0 28px;
 }
 
-/* ---------- دکمه‌ها ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -194,7 +186,6 @@ svg {
   cursor: not-allowed;
 }
 
-/* ---------- هدر ---------- */
 .header {
   position: sticky;
   top: 0;
@@ -415,7 +406,6 @@ svg {
   transform: rotate(-45deg);
 }
 
-/* ---------- جستجو ---------- */
 .search {
   position: fixed;
   inset: 0;
@@ -526,7 +516,6 @@ svg {
   color: var(--muted);
 }
 
-/* ---------- هیرو ---------- */
 .hero {
   position: relative;
   background: var(--ink);
@@ -702,7 +691,6 @@ svg {
   height: 16px;
 }
 
-/* ---------- بخش‌ها ---------- */
 .section {
   padding: 84px 0;
 }
@@ -771,7 +759,6 @@ svg {
   height: 14px;
 }
 
-/* ---------- دسته‌بندی‌ها ---------- */
 .cats {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
@@ -862,7 +849,6 @@ svg {
   height: 14px;
 }
 
-/* ---------- تب‌های ساده ---------- */
 .tabs-line {
   display: flex;
   gap: 28px;
@@ -892,7 +878,6 @@ svg {
   border-color: var(--accent);
 }
 
-/* ---------- کارت محصول ---------- */
 .products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1072,7 +1057,6 @@ svg {
   margin-inline-start: 4px;
 }
 
-/* ---------- مزیت‌ها ---------- */
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1122,7 +1106,6 @@ svg {
   color: var(--muted-light);
 }
 
-/* ---------- فوتر ---------- */
 .footer {
   background: #0b1411;
   color: #b5ae9f;
@@ -1258,7 +1241,6 @@ svg {
   color: var(--ink);
 }
 
-/* ---------- باکس سازنده ---------- */
 .credit {
   display: flex;
   align-items: center;
@@ -1345,7 +1327,6 @@ svg {
   font-size: 10.5px;
 }
 
-/* ---------- سرصفحهٔ صفحات داخلی ---------- */
 .page-head {
   background: var(--bone);
   padding: 40px 0;
@@ -1390,7 +1371,6 @@ svg {
   line-height: 2;
 }
 
-/* ---------- فروشگاه ---------- */
 .shop {
   display: grid;
   grid-template-columns: 262px 1fr;
@@ -1612,7 +1592,6 @@ svg {
   font-weight: 600;
 }
 
-/* نوار ابزار */
 .toolbar {
   display: flex;
   align-items: center;
@@ -1704,7 +1683,6 @@ svg {
   height: 14px;
 }
 
-/* حالت لیستی */
 .products.is-list {
   grid-template-columns: 1fr;
   gap: 0;
@@ -1755,7 +1733,6 @@ svg {
   margin-bottom: 8px;
 }
 
-/* ---------- صفحه محصول ---------- */
 .product {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
@@ -2110,7 +2087,6 @@ svg {
   font-weight: 500;
 }
 
-/* تب‌های اطلاعات */
 .product-tabs {
   padding: 68px 0 0;
 }
@@ -2214,7 +2190,6 @@ svg {
   color: var(--ink-soft);
 }
 
-/* ---------- سبد خرید ---------- */
 .cart {
   display: grid;
   grid-template-columns: 1fr 360px;
@@ -2478,7 +2453,6 @@ svg {
   margin-bottom: 24px;
 }
 
-/* ---------- مودال ---------- */
 .modal {
   position: fixed;
   inset: 0;
@@ -2634,7 +2608,6 @@ svg {
   display: inline-block;
 }
 
-/* ---------- توست ---------- */
 .toast-wrap {
   position: fixed;
   bottom: 24px;
@@ -2687,7 +2660,6 @@ svg {
   }
 }
 
-/* ---------- اسکلت ---------- */
 .skeleton {
   background: linear-gradient(90deg, var(--sand) 25%, #f0ebdf 37%, var(--sand) 63%);
   background-size: 400% 100%;
@@ -2703,7 +2675,6 @@ svg {
   }
 }
 
-/* ---------- ریسپانسیو ---------- */
 @media (max-width: 1180px) {
   .header__inner {
     gap: 18px;
@@ -3076,7 +3047,6 @@ svg {
   }
 }
 
-/* ---------- کاهش حرکت ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -3088,12 +3058,6 @@ svg {
   }
 }
 
-/* ============================================
-   تم سفید — یکدست‌سازی سطح‌ها روی زمینهٔ روشن
-   (هدر، هیرو، مزیت‌ها، خبرنامه و فوتر)
-   ============================================ */
-
-/* هدر */
 .header {
   background: var(--paper);
   color: var(--ink);
@@ -3157,7 +3121,6 @@ svg {
   background: var(--ink);
 }
 
-/* دکمه‌ها */
 .btn--primary {
   background: var(--accent);
   color: #fff;
@@ -3179,7 +3142,6 @@ svg {
   color: #fff;
 }
 
-/* جستجو */
 .search {
   background: rgba(27, 23, 20, 0.45);
 }
@@ -3189,7 +3151,6 @@ svg {
   border: 1px solid var(--line);
 }
 
-/* هیرو */
 .hero {
   background: var(--bone);
   color: var(--ink);
@@ -3250,7 +3211,6 @@ svg {
   color: #fff;
 }
 
-/* کارت محصول */
 .pcard__badge {
   background: var(--ink);
   color: #fff;
@@ -3281,7 +3241,6 @@ svg {
   background: #5f1620;
 }
 
-/* مزیت‌ها */
 .features {
   background: var(--paper);
   color: var(--ink);
@@ -3301,7 +3260,6 @@ svg {
   color: var(--muted);
 }
 
-/* فوتر */
 .footer {
   background: var(--paper);
   color: var(--muted);
@@ -3406,7 +3364,6 @@ svg {
   border-color: var(--line);
 }
 
-/* کنترل‌های فروشگاه و محصول */
 .filters-backdrop {
   background: rgba(27, 23, 20, 0.35);
 }
@@ -3443,7 +3400,6 @@ svg {
   background: rgba(27, 23, 20, 0.45);
 }
 
-/* منوی موبایل روی زمینهٔ سفید */
 @media (max-width: 980px) {
   .mainnav {
     background: var(--paper);
@@ -3471,11 +3427,6 @@ svg {
   }
 }
 
-/* ============================================
-   بهبود ظاهر (نسخهٔ ۳): گوشه‌های گردتر، تخفیف مشکی، حرکت
-   ============================================ */
-
-/* --- گوشه‌های گردتر برای تصاویر و رسانه‌ها --- */
 .pcard__media,
 .cat,
 .hero__media,
@@ -3511,7 +3462,6 @@ svg {
   border-radius: 50%;
 }
 
-/* --- تخفیف: مشکی به‌جای قرمز --- */
 .save-badge {
   background: var(--ink);
   color: var(--paper);
@@ -3528,13 +3478,11 @@ svg {
   font-weight: 700;
 }
 
-/* --- تصویر هیرو با رنگ طبیعی‌تر (روشن‌تر و خنثی) --- */
 .hero__media img {
   filter: none;
   image-rendering: auto;
 }
 
-/* --- حرکت‌های ظریف روی کارت‌ها و دکمه‌ها --- */
 .pcard {
   transition: transform 0.45s var(--ease);
 }
@@ -3559,7 +3507,6 @@ svg {
   transform: translateY(-1px);
 }
 
-/* --- انیمیشن ورود (فقط وقتی JS فعال است) --- */
 html.motion-on [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
@@ -3581,7 +3528,6 @@ html.motion-on .media-anim.is-ready {
   transition: opacity 0.85s var(--ease);
 }
 
-/* --- بخش‌های زنانه و بچگانه --- */
 .cats--two {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -3593,7 +3539,6 @@ html.motion-on .media-anim.is-ready {
   min-height: 260px;
 }
 
-/* --- صفحهٔ تماس --- */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3653,7 +3598,6 @@ html.motion-on .media-anim.is-ready {
   }
 }
 
-/* --- صفحهٔ درباره --- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3715,7 +3659,6 @@ html.motion-on .media-anim.is-ready {
   margin-top: 22px;
 }
 
-/* --- راهنمای خرید --- */
 .help-layout {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -3862,7 +3805,6 @@ html.motion-on .media-anim.is-ready {
   }
 }
 
-/* ---------- لینک «همهٔ نتایج» در جستجو ---------- */
 .search__more {
   display: block;
   padding: 12px 16px;
@@ -3884,11 +3826,10 @@ html.motion-on .media-anim.is-ready {
     padding: 12px 4px;
   }
   .search__input {
-    font-size: 16px; /* جلوگیری از زوم خودکار iOS */
+    font-size: 16px; 
   }
 }
 
-/* ---------- هشدار نمونه‌کار در سبد خرید ---------- */
 .demo-notice {
   padding: 30px 26px;
   text-align: center;
@@ -3915,7 +3856,6 @@ html.motion-on .media-anim.is-ready {
   margin-top: 10px;
 }
 
-/* ---------- فرم ورود با شمارهٔ موبایل ---------- */
 .header__account {
   cursor: pointer;
   background: none;
@@ -3962,7 +3902,6 @@ html.motion-on .media-anim.is-ready {
   line-height: 1.9;
 }
 
-/* هشدار ثابت داخل فرم ثبت سفارش نمونه‌کار */
 .checkout-demo {
   margin: 0 0 18px;
   padding: 14px 16px;

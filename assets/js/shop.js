@@ -1,6 +1,4 @@
-/* ============================================
-   صفحه فروشگاه: فیلتر، مرتب‌سازی و نوع نمایش
-   ============================================ */
+
 
 whenCatalogReady(function () {
   const grid = document.querySelector("[data-products]");
@@ -11,7 +9,7 @@ whenCatalogReady(function () {
   const startSort = params.get("sort");
   const startSearch = params.get("q");
 
-  /* وضعیت فیلترها */
+  
   const state = {
     cats: new Set(),
     sizes: new Set(),
@@ -28,7 +26,7 @@ whenCatalogReady(function () {
   }
   if (startSort) state.sort = startSort;
 
-  /* ---------- ساخت کنترل‌های فیلتر ---------- */
+  
 
   const catsBox = document.querySelector("[data-filter-cats]");
   catsBox.innerHTML = CATEGORIES.map(function (cat) {
@@ -41,7 +39,7 @@ whenCatalogReady(function () {
     );
   }).join("");
 
-  /* سایزها: همهٔ سایزهای موجود در محصولات */
+  
   const allSizes = [];
   PRODUCTS.forEach(function (p) {
     p.sizes.forEach(function (size) {
@@ -58,7 +56,7 @@ whenCatalogReady(function () {
     return '<button type="button" class="size-chip" data-size="' + size + '">' + size + "</button>";
   }).join("");
 
-  /* رنگ‌ها: فقط رنگ‌های موجود در محصولات */
+  
   const usedColors = [];
   PRODUCTS.forEach(function (p) {
     p.colors.forEach(function (color) {
@@ -85,7 +83,7 @@ whenCatalogReady(function () {
 
   sortSelect.value = state.sort;
 
-  /* ---------- فیلتر و رندر ---------- */
+  
 
   function matches(product) {
     if (state.cats.size && !state.cats.has(product.category)) return false;
@@ -166,7 +164,7 @@ whenCatalogReady(function () {
     }
   }
 
-  /* ---------- رویدادها ---------- */
+  
 
   catsBox.addEventListener("change", function (event) {
     const box = event.target.closest("[data-cat]");
@@ -254,7 +252,7 @@ whenCatalogReady(function () {
     render();
   });
 
-  /* باز و بسته کردن فیلتر در موبایل */
+  
   const filters = document.querySelector("[data-filters]");
   const backdrop = document.querySelector("[data-filters-backdrop]");
   const openBtn = document.querySelector("[data-filters-open]");
@@ -270,7 +268,7 @@ whenCatalogReady(function () {
   closeBtn.addEventListener("click", function () { setFilters(false); });
   backdrop.addEventListener("click", function () { setFilters(false); });
 
-  /* مقدار اولیه */
+  
   catsBox.querySelectorAll("[data-cat]").forEach(function (input) {
     input.checked = state.cats.has(input.value);
   });

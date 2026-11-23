@@ -1,11 +1,3 @@
-"""ساخت اپلیکیشن Flask فروشگاه ۰۵۳۱: API + سرو کردن همان سایت استاتیک.
-
-اجرا:
-    cd backend
-    pip install -r requirements.txt
-    python run.py
-سپس سایت روی http://127.0.0.1:5000 و پنل روی /admin.html باز می‌شود.
-"""
 
 from __future__ import annotations
 
@@ -22,11 +14,9 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 PAGES = {"index.html", "shop.html", "product.html", "cart.html", "admin.html"}
 ASSET_DIRS = {"css", "js", "img", "fonts"}
 
-
 def _no_cache(response):
     response.headers["Cache-Control"] = "no-store"
     return response
-
 
 def create_app() -> Flask:
     app = Flask(__name__, static_folder=None)

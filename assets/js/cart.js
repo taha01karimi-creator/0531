@@ -1,7 +1,4 @@
-/* ============================================
-   صفحه سبد خرید: تغییر تعداد، حذف، کد تخفیف
-   و ثبت سفارش
-   ============================================ */
+
 
 whenCatalogReady(function () {
   const listEl = document.querySelector("[data-cart-list]");
@@ -29,9 +26,9 @@ whenCatalogReady(function () {
   const COUPON_KEY = "rega_coupon";
   let coupon = readStore(COUPON_KEY, "");
 
-  /* ---------- ابزار ---------- */
+  
 
-  /** تبدیل ارقام فارسی/عربی به لاتین */
+  
   function toLatinDigits(value) {
     const fa = "۰۱۲۳۴۵۶۷۸۹";
     const ar = "٠١٢٣٤٥٦٧٨٩";
@@ -46,7 +43,7 @@ whenCatalogReady(function () {
     return found ? found.percent : 0;
   }
 
-  /* ---------- رندر ---------- */
+  
 
   function render() {
     const items = cartDetailed();
@@ -133,14 +130,13 @@ whenCatalogReady(function () {
       couponMsg.textContent = "کد «" + coupon + "» فعال است: " + COUPONS[coupon].label;
     } else {
       couponRow.hidden = true;
-      // پیام خطای کد نامعتبر باید بعد از بازمحاسبهٔ جمع باقی بماند
       if (!couponMsg.classList.contains("is-error")) {
         couponMsg.textContent = "";
       }
     }
   }
 
-  /* ---------- رویدادهای سبد ---------- */
+  
 
   listEl.addEventListener("click", function (event) {
     const inc = event.target.closest("[data-inc]");
@@ -188,7 +184,7 @@ whenCatalogReady(function () {
     render();
   });
 
-  /* ---------- کد تخفیف ---------- */
+  
 
   document.querySelector("[data-coupon-apply]").addEventListener("click", applyCoupon);
   couponInput.addEventListener("input", function () {
@@ -227,7 +223,7 @@ whenCatalogReady(function () {
     updateTotals(cartDetailed());
   }
 
-  /* ---------- مودال ثبت سفارش ---------- */
+  
 
   function openModal() {
     modal.classList.add("is-open");
@@ -239,7 +235,7 @@ whenCatalogReady(function () {
     document.body.style.overflow = "";
   }
 
-  /* پیش از باز شدن فرم، پیام «این نمونه‌کار است» نمایش داده می‌شود */
+  
   function openDemoNotice() {
     demoModal.classList.add("is-open");
     document.body.style.overflow = "hidden";
@@ -283,7 +279,7 @@ whenCatalogReady(function () {
     else if (modal.classList.contains("is-open")) closeModal();
   });
 
-  /* اعتبارسنجی ساده */
+  
   function setError(field, hasError) {
     field.classList.toggle("has-error", hasError);
   }
@@ -317,7 +313,7 @@ whenCatalogReady(function () {
       return;
     }
 
-    /* این فروشگاه نمونه‌کار است؛ ثبت سفارش واقعی انجام نمی‌شود. */
+    
     const ALLOW_REAL_ORDERS = false;
     let orderCode = "RG-" + Math.floor(1000 + Math.random() * 9000);
     let total = totalEl.textContent;
@@ -376,7 +372,7 @@ whenCatalogReady(function () {
     render();
   });
 
-  /* ---------- شروع ---------- */
+  
   render();
   if (cartCount() === 0) {
     coupon = "";

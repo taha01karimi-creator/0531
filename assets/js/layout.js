@@ -1,7 +1,4 @@
-/* ============================================
-   هدر، جستجو و فوتر مشترک تمام صفحات
-   برند: کدلاین — با لوگوی رسمی مجموعه
-   ============================================ */
+
 
 const NAV_LINKS = [
   { href: "index.html", label: "خانه", page: "home" },
@@ -147,7 +144,6 @@ const FOOTER_HTML =
   "</div>" +
   "</div></footer>";
 
-/* تزریق هدر و فوتر مشترک */
 (function injectLayout() {
   const headerSlot = document.querySelector("[data-site-header]");
   const footerSlot = document.querySelector("[data-site-footer]");

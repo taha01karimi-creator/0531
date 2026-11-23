@@ -1,6 +1,4 @@
-/* ============================================
-   صفحه محصول: گالری، انتخاب رنگ و سایز، تب‌ها
-   ============================================ */
+
 
 whenCatalogReady(function () {
   const root = document.querySelector("[data-product]");
@@ -9,7 +7,7 @@ whenCatalogReady(function () {
   const params = new URLSearchParams(window.location.search);
   const product = productById(params.get("id"));
 
-  /* اگر شناسهٔ محصول معتبر نباشد */
+  
   if (!product) {
     root.innerHTML =
       '<div class="empty" style="grid-column:1/-1">' +
@@ -29,7 +27,7 @@ whenCatalogReady(function () {
   const crumb = document.querySelector("[data-crumb-product]");
   if (crumb) crumb.textContent = product.name;
 
-  /* داده‌ی ساختاریافته برای موتور جستجو */
+  
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -147,13 +145,13 @@ whenCatalogReady(function () {
     "</div>" +
     "</div>";
 
-  /* ---------- رفتارهای صفحه ---------- */
+  
 
   let currentColor = color;
   let currentSize = size;
   let qty = 1;
 
-  /* گالری */
+  
   const mainImage = root.querySelector("[data-main-img]");
   root.querySelector("[data-thumbs]").addEventListener("click", function (event) {
     const thumb = event.target.closest("[data-thumb]");
@@ -172,7 +170,7 @@ whenCatalogReady(function () {
     window.open(mainImage.src, "_blank", "noopener");
   });
 
-  /* رنگ */
+  
   root.querySelector("[data-colors]").addEventListener("click", function (event) {
     const btn = event.target.closest("[data-color]");
     if (!btn) return;
@@ -184,7 +182,7 @@ whenCatalogReady(function () {
     });
   });
 
-  /* سایز */
+  
   root.querySelector("[data-sizes]").addEventListener("click", function (event) {
     const btn = event.target.closest("[data-size]");
     if (!btn) return;
@@ -196,7 +194,7 @@ whenCatalogReady(function () {
     });
   });
 
-  /* تعداد */
+  
   const qtyValue = root.querySelector("[data-qty-value]");
   root.querySelector("[data-qty-plus]").addEventListener("click", function () {
     qty = Math.min(10, qty + 1);
@@ -207,12 +205,12 @@ whenCatalogReady(function () {
     qtyValue.textContent = faNum(qty);
   });
 
-  /* افزودن به سبد */
+  
   root.querySelector("[data-buy]").addEventListener("click", function () {
     addToCart(product.id, currentSize, currentColor, qty);
   });
 
-  /* علاقه‌مندی */
+  
   const wishBtn = root.querySelector("[data-wish-product]");
   if (isWished(product.id)) {
     wishBtn.classList.add("is-active");
@@ -227,7 +225,7 @@ whenCatalogReady(function () {
     wishBtn.style.borderColor = active ? "var(--brand)" : "";
   });
 
-  /* ---------- تب‌های اطلاعات ---------- */
+  
   const tabsWrap = document.querySelector("[data-product-tabs]");
   const saved = off ? product.oldPrice - product.price : 0;
 
@@ -284,7 +282,7 @@ whenCatalogReady(function () {
     });
   });
 
-  /* ---------- محصولات مرتبط ---------- */
+  
   const related = document.querySelector("[data-related]");
   const others = PRODUCTS.filter(function (item) {
     return item.id !== product.id;
@@ -299,7 +297,6 @@ whenCatalogReady(function () {
   related.innerHTML = sameCategory.concat(rest).slice(0, 4).map(productCard).join("");
 });
 
-/* جدول اندازهٔ متناسب با نوع محصول (بچگانه، شلوار یا بالاتنه) */
 function buildSizeGuide(product) {
   const sizes = product.sizes || [];
   if (!sizes.length || sizes[0] === "فری‌سایز") return "";

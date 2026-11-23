@@ -1,9 +1,3 @@
-"""اجرای محلی بک‌اند فروشگاه ۰۵۳۱.
-
-    python run.py
-برای استقرار واقعی از WSGI استفاده کنید؛ مثلاً:
-    gunicorn --workers 2 --bind 0.0.0.0:8000 "app:create_app()"
-"""
 
 from __future__ import annotations
 

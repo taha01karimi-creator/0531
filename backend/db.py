@@ -1,8 +1,3 @@
-"""دیتابیس SQLite: ساخت جدول‌ها، اتصال هر درخواست و دادهٔ اولیه.
-
-SQLite انتخاب شده تا پروژه بدون نصب دیتابیس جداگانه روی هر سیستمی اجرا شود.
-برای استقرار واقعی می‌توان همین لایه را به Postgres منتقل کرد؛ API تغییری نمی‌کند.
-"""
 
 from __future__ import annotations
 
@@ -82,10 +77,8 @@ DEFAULT_SETTINGS = {
     "coupons": {"CODE10": {"percent": 10, "label": "ده درصد تخفیف"}},
 }
 
-
 def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-
 
 def connect(path: str) -> sqlite3.Connection:
     connection = sqlite3.connect(path)
@@ -93,22 +86,17 @@ def connect(path: str) -> sqlite3.Connection:
     connection.execute("PRAGMA foreign_keys = ON")
     return connection
 
-
 def get_db() -> sqlite3.Connection:
-    """اتصال دیتابیس مربوط به همین درخواست (در end of request بسته می‌شود)."""
     if "db" not in g:
         g.db = connect(str(current_app.config["DB_PATH"]))
     return g.db
-
 
 def close_db(_error=None) -> None:
     connection = g.pop("db", None)
     if connection is not None:
         connection.close()
 
-
 def init_db(app) -> None:
-    """ساخت جدول‌ها و دادهٔ اولیه؛ اجرای مکرر بی‌خطر است."""
     app.config["DATA_DIR"].mkdir(parents=True, exist_ok=True)
     connection = connect(str(app.config["DB_PATH"]))
     try:
@@ -120,7 +108,6 @@ def init_db(app) -> None:
     finally:
         connection.close()
     app.teardown_appcontext(close_db)
-
 
 def _seed_settings(connection: sqlite3.Connection, data_dir) -> None:
     defaults = dict(DEFAULT_SETTINGS)
@@ -139,7 +126,6 @@ def _seed_settings(connection: sqlite3.Connection, data_dir) -> None:
             (key, json.dumps(value, ensure_ascii=False)),
         )
     connection.commit()
-
 
 def _seed_products(connection: sqlite3.Connection, data_dir) -> None:
     existing = connection.execute("SELECT COUNT(*) AS n FROM products").fetchone()["n"]
@@ -177,16 +163,15 @@ def _seed_products(connection: sqlite3.Connection, data_dir) -> None:
         )
     connection.commit()
 
-
 def _seed_admin(connection: sqlite3.Connection, app) -> None:
     if connection.execute("SELECT COUNT(*) AS n FROM admins").fetchone()["n"]:
         return
-    from security import hash_password  # وارد کردن دیرهنگام برای پرهیز از حلقه
+    from security import hash_password
 
     password = app.config["ADMIN_PASSWORD"]
     if not password:
         password = secrets.token_urlsafe(9)
-        # رمز هرگز در لاگ/کنسول چاپ نمی‌شود؛ فقط در فایل خصوصی ذخیره می‌شود
+
         password_file = app.config["DATA_DIR"] / "admin_password.txt"
         password_file.write_text(password, encoding="utf-8")
         try:

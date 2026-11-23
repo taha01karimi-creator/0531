@@ -1,7 +1,4 @@
-/* ============================================
-   پنل مدیریت کدلاین ۰۵۳۱
-   همهٔ داده‌ها از API بک‌اند خوانده و نوشته می‌شوند.
-   ============================================ */
+
 
 (function () {
   "use strict";
@@ -48,7 +45,7 @@
     productFilter: { q: "", category: "" }
   };
 
-  /* ---------- ابزار ---------- */
+  
 
   function $(selector, scope) {
     return (scope || document).querySelector(selector);
@@ -96,7 +93,7 @@
     return found ? found.title : id;
   }
 
-  /* ---------- ارتباط با API ---------- */
+  
 
   function cookie(name) {
     var match = document.cookie.match(new RegExp("(?:^|;\\s*)" + name + "=([^;]*)"));
@@ -107,7 +104,7 @@
     try {
       await fetch("/api/csrf", { credentials: "same-origin" });
     } catch (error) {
-      /* سرور در دسترس نیست؛ پیام در boot نمایش داده می‌شود */
+      
     }
   }
 
@@ -144,7 +141,7 @@
     return { ok: response.ok, status: response.status, data: data };
   }
 
-  /* ---------- ورود ---------- */
+  
 
   function renderLogin(message) {
     root.innerHTML =
@@ -219,7 +216,7 @@
     renderLogin();
   }
 
-  /* ---------- داده ---------- */
+  
 
   async function loadDashboard() {
     var result = await api("/api/admin/stats");
@@ -261,7 +258,7 @@
     state.settings = result.data.settings || { shippingCost: 0, freeShippingFrom: 0, coupons: {} };
   }
 
-  /* ---------- قاب ---------- */
+  
 
   function renderShell() {
     var navHtml = NAV.map(function (item) {
@@ -320,7 +317,7 @@
     );
   }
 
-  /* ---------- داشبورد ---------- */
+  
 
   function dashboardHTML() {
     var stats = state.stats || {};
@@ -373,7 +370,7 @@
     return '<span class="adm-tag adm-tag--' + esc(status) + '">' + esc(STATUSES[status] || status) + "</span>";
   }
 
-  /* ---------- محصولات ---------- */
+  
 
   function filteredProducts() {
     var term = (state.productFilter.q || "").trim();
@@ -585,7 +582,7 @@
     toast("محصول حذف شد");
   }
 
-  /* ---------- سفارش‌ها ---------- */
+  
 
   function ordersHTML() {
     var statusOptions = Object.keys(STATUSES)
@@ -736,7 +733,7 @@
     }
   }
 
-  /* ---------- تنظیمات ---------- */
+  
 
   function couponRows(coupons) {
     var rows = Object.keys(coupons || {})
@@ -818,7 +815,7 @@
     toast("تنظیمات ذخیره شد ✓");
   }
 
-  /* ---------- مودال ---------- */
+  
 
   function openModal(html) {
     closeModal();
@@ -831,7 +828,7 @@
     });
   }
 
-  /* ---------- رویدادها ---------- */
+  
 
   async function go(page) {
     state.page = page;
@@ -941,7 +938,7 @@
     if (event.key === "Escape") closeModal();
   });
 
-  /* ---------- شروع ---------- */
+  
 
   async function boot() {
     await primeCsrf();

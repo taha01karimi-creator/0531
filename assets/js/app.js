@@ -1,24 +1,16 @@
-/* ============================================
-   منطق مشترک سایت: سبد خرید، علاقه‌مندی،
-   جستجو، منو و رندر کارت محصول
-   ============================================ */
+
 
 const CART_KEY = "rega_cart";
 const WISH_KEY = "rega_wish";
 
-/* ---------- ابزارهای عمومی ---------- */
-
-/** تبدیل عدد به قالب فارسی با جداکننده هزارگان */
 function faNum(value) {
   return Number(value).toLocaleString("fa-IR");
 }
 
-/** قیمت با واحد تومان */
 function toman(value) {
   return faNum(value) + " تومان";
 }
 
-/** خواندن امن از localStorage */
 function readStore(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -32,7 +24,7 @@ function writeStore(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    /* احتمال پر بودن حافظه یا حالت خصوصی مرورگر */
+    
   }
 }
 
@@ -42,7 +34,6 @@ function productById(id) {
   });
 }
 
-/* یکسان‌سازی متن جستجو: حروف عربی، نیم‌فاصله، اعداد فارسی و علائم */
 function searchNormalize(value) {
   var faDigits = "۰۱۲۳۴۵۶۷۸۹";
   return String(value == null ? "" : value)
@@ -59,8 +50,6 @@ function searchNormalize(value) {
     .toLowerCase();
 }
 
-/* جستجو روی نام، دسته، جنس پارچه، رنگ و توضیح محصول؛
-   همهٔ کلمه‌های عبارت باید پیدا شوند. */
 function matchesSearch(item, query) {
   var tokens = searchNormalize(query).split(" ").filter(Boolean);
   if (!tokens.length) return true;
@@ -85,8 +74,6 @@ function percentOff(product) {
   if (!product.oldPrice || product.oldPrice <= product.price) return 0;
   return Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
 }
-
-/* ---------- سبد خرید ---------- */
 
 function getCart() {
   const cart = readStore(CART_KEY, []);
@@ -152,7 +139,6 @@ function cartCount() {
   }, 0);
 }
 
-/** تبدیل خطوط سبد به آیتم‌های کامل همراه محصول */
 function cartDetailed() {
   const result = [];
   getCart().forEach(function (line) {
@@ -182,8 +168,6 @@ function updateCartCount() {
   });
 }
 
-/* ---------- علاقه‌مندی ---------- */
-
 function getWishlist() {
   const list = readStore(WISH_KEY, []);
   return Array.isArray(list) ? list : [];
@@ -211,8 +195,6 @@ function toggleWish(id) {
   return added;
 }
 
-/* ---------- توست ---------- */
-
 function showToast(message) {
   let wrap = document.querySelector(".toast-wrap");
   if (!wrap) {
@@ -237,8 +219,6 @@ function showToast(message) {
   }, 2600);
 }
 
-/* ---------- ساخت قطعات HTML ---------- */
-
 const ICON_HEART =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg>';
 
@@ -253,7 +233,6 @@ function starsHtml(rating) {
   );
 }
 
-/** کارت محصول یکسان برای همه صفحات */
 function productCard(product) {
   const off = percentOff(product);
   const badge = off
@@ -301,8 +280,6 @@ function productCard(product) {
   );
 }
 
-/* ---------- هدر: منو، جستجو، شمارنده سبد ---------- */
-
 function initHeader() {
   updateCartCount();
 
@@ -310,7 +287,7 @@ function initHeader() {
   const burger = document.querySelector("[data-menu-toggle]");
   const nav = document.querySelector(".mainnav");
 
-  /* منوی موبایل */
+  
   if (burger && nav) {
     burger.addEventListener("click", function () {
       const open = nav.classList.toggle("is-open");
@@ -327,7 +304,7 @@ function initHeader() {
     });
   }
 
-  /* سایه هدر هنگام اسکرول */
+  
   if (header) {
     const onScroll = function () {
       header.classList.toggle("is-stuck", window.scrollY > 12);
@@ -336,7 +313,7 @@ function initHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* جستجوی سراسری */
+  
   const search = document.querySelector("[data-search]");
   if (search) {
     const input = search.querySelector(".search__input");
@@ -412,7 +389,7 @@ function initHeader() {
     });
   }
 
-  /* کلیک‌های عمومی روی کارت‌ها (افزودن به سبد و علاقه‌مندی) */
+  
   document.addEventListener("click", function (event) {
     const addBtn = event.target.closest("[data-add]");
     if (addBtn) {
@@ -438,7 +415,7 @@ function initHeader() {
     }
   });
 
-  /* ---------- ورود نمایشی با شمارهٔ موبایل ---------- */
+  
 
   const ACCOUNT_KEY = "rega_account_phone";
   const loginModal = document.querySelector("[data-login-modal]");
@@ -509,7 +486,7 @@ function initHeader() {
   });
 
   if (phoneInput) {
-    /* ارقام فارسی/عربی همان لحظه به رقم عادی تبدیل می‌شوند */
+    
     phoneInput.addEventListener("input", function () {
       phoneInput.value = toLatinDigits(phoneInput.value).replace(/[^0-9]/g, "").slice(0, 11);
       if (loginError) loginError.textContent = "";

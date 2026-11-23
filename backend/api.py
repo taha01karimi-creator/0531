@@ -1,8 +1,3 @@
-"""API فروشگاه ۰۵۳۱ — کاتالوگ عمومی، ثبت و پیگیری سفارش و مسیرهای پنل مدیریت.
-
-قرارداد داده با فرانت‌اند سایت هم‌خوان است: محصول‌ها با همان کلیدهایی برمی‌گردند
-که `assets/js/data.js` استفاده می‌کند. قیمت سفارش همیشه روی سرور حساب می‌شود.
-"""
 
 from __future__ import annotations
 
@@ -32,10 +27,6 @@ bp = Blueprint("api", __name__, url_prefix="/api")
 PHONE_RE = re.compile(r"^09\d{9}$")
 MAX_QTY = 10
 
-
-# ------------------------------------------------------------------ کمکی‌ها
-
-
 def _json_list(raw: str) -> list:
     try:
         value = json.loads(raw or "[]")
@@ -43,9 +34,7 @@ def _json_list(raw: str) -> list:
     except (TypeError, ValueError):
         return []
 
-
 def _product(row) -> dict:
-    """محصول دیتابیس به شکل مورد انتظار فرانت‌اند."""
     return {
         "id": row["id"],
         "name": row["name"],
@@ -65,7 +54,6 @@ def _product(row) -> dict:
         "active": bool(row["active"]),
     }
 
-
 def _settings() -> dict:
     rows = get_db().execute("SELECT key, value FROM settings").fetchall()
     values = {}
@@ -80,7 +68,6 @@ def _settings() -> dict:
         "freeShippingFrom": int(values.get("free_shipping_from") or 0),
         "coupons": coupons,
     }
-
 
 def _order_items(code: str) -> list[dict]:
     rows = get_db().execute(
@@ -99,9 +86,7 @@ def _order_items(code: str) -> list[dict]:
         for row in rows
     ]
 
-
 def _public_order(row) -> dict:
-    """اطلاعات سفارش برای مشتری: بدون نام و آدرس و شمارهٔ کامل."""
     return {
         "code": row["code"],
         "createdAt": row["created_at"],
@@ -113,7 +98,6 @@ def _public_order(row) -> dict:
         "total": row["total"],
         "coupon": row["coupon"],
     }
-
 
 def _admin_order(row) -> dict:
     order = _public_order(row)
@@ -127,7 +111,6 @@ def _admin_order(row) -> dict:
     )
     return order
 
-
 def _new_order_code() -> str:
     connection = get_db()
     for _ in range(20):
@@ -139,23 +122,16 @@ def _new_order_code() -> str:
             return code
     raise RuntimeError("ساخت کد سفارش ممکن نشد")
 
-
 def _clean_text(value, limit: int) -> str:
     text = " ".join(str(value or "").split())
     return text[:limit]
 
-
 def _bad(message: str, status: int = 400):
     return jsonify({"error": message}), status
-
-
-# ------------------------------------------------------------------ عمومی
-
 
 @bp.get("/health")
 def health():
     return jsonify({"ok": True, "name": "codelaine-shop"})
-
 
 @bp.get("/csrf")
 def csrf():
@@ -166,14 +142,12 @@ def csrf():
     response.content_type = "application/json; charset=utf-8"
     return response
 
-
 @bp.get("/products")
 def products():
     rows = get_db().execute(
         "SELECT * FROM products WHERE active = 1 ORDER BY added_at DESC, name"
     ).fetchall()
     return jsonify({"products": [_product(row) for row in rows]})
-
 
 @bp.get("/products/<product_id>")
 def product_detail(product_id: str):
@@ -184,11 +158,9 @@ def product_detail(product_id: str):
         return _bad("محصول پیدا نشد", 404)
     return jsonify({"product": _product(row)})
 
-
 @bp.get("/settings")
 def public_settings():
     return jsonify({"settings": _settings()})
-
 
 @bp.post("/orders")
 @mutation_guard
@@ -314,7 +286,6 @@ def create_order():
     row = connection.execute("SELECT * FROM orders WHERE code = ?", (code,)).fetchone()
     return jsonify({"order": _public_order(row)}), 201
 
-
 @bp.get("/orders/track")
 def track_order():
     code = _clean_text(request.args.get("code"), 32).upper()
@@ -329,17 +300,12 @@ def track_order():
         return _bad("سفارشی با این کد پیدا نشد", 404)
     return jsonify({"order": _public_order(row)})
 
-
-# ------------------------------------------------------------------ ورود مدیر
-
-
 @bp.get("/auth/me")
 def auth_me():
     user = current_admin()
     if not user:
         return _bad("وارد نشده‌اید", 401)
     return jsonify({"user": user})
-
 
 @bp.post("/auth/login")
 def auth_login():
@@ -369,21 +335,16 @@ def auth_login():
     session.clear()
     session[SESSION_USER_KEY] = user
     session.permanent = True
-    # توکن تازهٔ CSRF همراه پاسخ ورود صادر می‌شود تا فرم‌های پنل کار کنند.
+
     response = jsonify({"user": user})
     issue_csrf_token(response)
     return response
-
 
 @bp.post("/auth/logout")
 @login_required
 def auth_logout():
     session.clear()
     return jsonify({"ok": True})
-
-
-# ------------------------------------------------------------------ پنل: محصولات
-
 
 @bp.get("/admin/products")
 @login_required
@@ -392,7 +353,6 @@ def admin_products():
         "SELECT * FROM products ORDER BY added_at DESC, name"
     ).fetchall()
     return jsonify({"products": [_product(row) for row in rows]})
-
 
 def _product_payload(payload: dict, *, partial_from: dict | None = None) -> tuple[dict, str | None]:
     base = dict(partial_from or {})
@@ -462,7 +422,6 @@ def _product_payload(payload: dict, *, partial_from: dict | None = None) -> tupl
         "description": desc,
     }, None
 
-
 @bp.post("/admin/products")
 @login_required
 def admin_product_create():
@@ -501,7 +460,6 @@ def admin_product_create():
     connection.commit()
     row = connection.execute("SELECT * FROM products WHERE id = ?", (values["id"],)).fetchone()
     return jsonify({"product": _product(row)}), 201
-
 
 @bp.put("/admin/products/<product_id>")
 @login_required
@@ -552,7 +510,6 @@ def admin_product_update(product_id: str):
     row = connection.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
     return jsonify({"product": _product(row)})
 
-
 @bp.delete("/admin/products/<product_id>")
 @login_required
 def admin_product_delete(product_id: str):
@@ -560,14 +517,10 @@ def admin_product_delete(product_id: str):
     found = connection.execute("SELECT 1 FROM products WHERE id = ?", (product_id,)).fetchone()
     if not found:
         return _bad("محصول پیدا نشد", 404)
-    # حذف نرم: سفارش‌های قبلی به اطلاعات محصول نیاز دارند.
+
     connection.execute("UPDATE products SET active = 0 WHERE id = ?", (product_id,))
     connection.commit()
     return jsonify({"ok": True})
-
-
-# ------------------------------------------------------------------ پنل: سفارش‌ها
-
 
 @bp.get("/admin/orders")
 @login_required
@@ -590,7 +543,6 @@ def admin_orders():
     rows = get_db().execute(sql, params).fetchall()
     return jsonify({"orders": [_admin_order(row) for row in rows]})
 
-
 @bp.get("/admin/orders/<code>")
 @login_required
 def admin_order_detail(code: str):
@@ -600,7 +552,6 @@ def admin_order_detail(code: str):
     if not row:
         return _bad("سفارش پیدا نشد", 404)
     return jsonify({"order": _admin_order(row)})
-
 
 @bp.put("/admin/orders/<code>")
 @login_required
@@ -622,15 +573,10 @@ def admin_order_update(code: str):
     ).fetchone()
     return jsonify({"order": _admin_order(row)})
 
-
-# ------------------------------------------------------------------ پنل: تنظیمات و آمار
-
-
 @bp.get("/admin/settings")
 @login_required
 def admin_settings_get():
     return jsonify({"settings": _settings()})
-
 
 @bp.put("/admin/settings")
 @login_required
@@ -675,7 +621,6 @@ def admin_settings_put():
         )
     connection.commit()
     return jsonify({"settings": _settings()})
-
 
 @bp.get("/admin/stats")
 @login_required

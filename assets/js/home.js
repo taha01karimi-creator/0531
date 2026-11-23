@@ -1,6 +1,4 @@
-/* ============================================
-   صفحه اصلی: اسلایدر، تب محصولات، شمارش معکوس
-   ============================================ */
+
 
 whenCatalogReady(function () {
   initHeroSlider();
@@ -10,7 +8,6 @@ whenCatalogReady(function () {
   fillCategoryCounts();
 });
 
-/* شمارش محصولات هر دسته روی کاشی‌های صفحهٔ اصلی */
 function fillCategoryCounts() {
   document.querySelectorAll("[data-cat-count]").forEach(function (el) {
     const cat = el.getAttribute("data-cat-count");
@@ -21,7 +18,6 @@ function fillCategoryCounts() {
   });
 }
 
-/* ---------- اسلایدر هیرو ---------- */
 const HERO_SLIDES = [
   {
     eyebrow: "کالکشن پاییز ۱۴۰۵",
@@ -128,7 +124,6 @@ function initHeroSlider() {
   restart();
 }
 
-/* ---------- رندر محصولات صفحه اصلی ---------- */
 function renderInto(selector, list) {
   const grid = document.querySelector(selector);
   if (!grid) return;
@@ -164,5 +159,3 @@ function renderBestSellers() {
   renderInto("[data-products-best]", list);
 }
 
-/* ---------- شمارش معکوس پیشنهاد ---------- */
-/* ---------- فرم خبرنامه ---------- */
