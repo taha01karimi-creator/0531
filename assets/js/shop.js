@@ -48,7 +48,7 @@ whenCatalogReady(function () {
       if (allSizes.indexOf(size) === -1) allSizes.push(size);
     });
   });
-  const sizeOrder = ["S", "M", "L", "XL", "XXL", "30", "32", "34", "36", "38", "فری‌سایز"];
+  const sizeOrder = ["S", "M", "L", "XL", "XXL", "30", "32", "34", "36", "38", "۴ سال", "۶ سال", "۸ سال", "۱۰ سال", "فری‌سایز"];
   allSizes.sort(function (a, b) {
     return sizeOrder.indexOf(a) - sizeOrder.indexOf(b);
   });
@@ -157,10 +157,10 @@ whenCatalogReady(function () {
       descEl.textContent = "محصولات دستهٔ «" + title + "»؛ همه با ارسال سریع و امکان بازگشت تا ۷ روز.";
       document.title = title + " | کدلاین";
     } else {
-      titleEl.textContent = "لباس مردانه";
-      crumbEl.textContent = "لباس مردانه";
+      titleEl.textContent = "همهٔ محصولات";
+      crumbEl.textContent = "همهٔ محصولات";
       descEl.textContent =
-        "مجموعه‌ای از پوشاک ساده و کاربردی با پارچه‌های طبیعی. برای پیدا کردن سریع‌تر، از فیلترهای سمت راست استفاده کنید.";
+        "پوشاک مردانه، زنانه و بچگانه با پارچه‌های طبیعی. برای پیدا کردن سریع‌تر، از فیلترهای سمت راست استفاده کنید.";
       document.title = "فروشگاه | کدلاین";
     }
   }

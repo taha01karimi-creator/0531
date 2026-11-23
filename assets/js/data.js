@@ -1,6 +1,6 @@
 /* ============================================
    داده‌های فروشگاه
-   ۳۳ محصول در ۸ دسته‌بندی
+   ۳۹ محصول در ۱۰ دسته‌بندی
    ============================================ */
 
 const CATEGORIES = [
@@ -11,7 +11,9 @@ const CATEGORIES = [
   { id: "sweat", title: "سویشرت و هودی", image: "assets/img/hoodie-sage.jpg" },
   { id: "pants", title: "شلوار", image: "assets/img/pants-cream.jpg" },
   { id: "outer", title: "پالتو و کاپشن", image: "assets/img/coat-camel.jpg" },
-  { id: "accessory", title: "اکسسوری", image: "assets/img/socks-black.jpg" }
+  { id: "accessory", title: "اکسسوری", image: "assets/img/socks-black.jpg" },
+  { id: "women", title: "زنانه", image: "assets/img/women-coat.jpg" },
+  { id: "kids", title: "بچگانه", image: "assets/img/kids-hoodie.jpg" }
 ];
 
 /* رنگ‌های استاندارد فروشگاه */
@@ -35,6 +37,7 @@ const COLORS = {
 const SIZE_SETS = {
   clothing: ["S", "M", "L", "XL", "XXL"],
   pants: ["30", "32", "34", "36", "38"],
+  kids: ["۴ سال", "۶ سال", "۸ سال", "۱۰ سال"],
   free: ["فری‌سایز"]
 };
 
@@ -614,6 +617,112 @@ const PRODUCTS = [
     material: "چرم طبیعی",
     fit: "قابل تنظیم",
     desc: "کمربند چرمی با سگک فلزی ساده و دوخت لبه. چرم طبیعی آن با گذشت زمان حالت و رنگ گرم‌تری پیدا می‌کند."
+  },
+
+  /* ---------- زنانه ---------- */
+  {
+    id: "women-blouse",
+    name: "شومیز ابریشمی کرم زنانه مدل ۷۱۰۲",
+    category: "women",
+    price: 2790000,
+    oldPrice: 3290000,
+    images: ["assets/img/women-blouse.jpg"],
+    colors: ["cream", "white", "black"],
+    sizes: SIZE_SETS.clothing,
+    rating: 4.7,
+    reviews: 54,
+    sales: 186,
+    addedAt: "2026-11-21",
+    material: "ابریشم مصنوعی",
+    fit: "راحت",
+    desc: "شومیز زنانه با پارچه‌ی نرم و دراپه‌ی ملایم که روی بدن می‌نشیند. یقه‌ی ساده و آستین بلند، آن را برای محیط کار و مهمانی مناسب می‌کند."
+  },
+  {
+    id: "women-dress",
+    name: "پیراهن میدی صورتی زنانه مدل ۷۱۱۸",
+    category: "women",
+    price: 3490000,
+    oldPrice: 3990000,
+    images: ["assets/img/women-dress.jpg"],
+    colors: ["pink", "cream", "navy"],
+    sizes: SIZE_SETS.clothing,
+    rating: 4.6,
+    reviews: 38,
+    sales: 142,
+    addedAt: "2026-11-20",
+    material: "ویسکوز و پنبه",
+    fit: "راسته",
+    desc: "پیراهن میدی با برش ساده و رنگ صورتی خاکی؛ پارچه‌ی سبک آن برای مهمانی روز و استایل روزمره انتخاب خوبی است. آستر دارد و بدون آستین طراحی شده است."
+  },
+  {
+    id: "women-coat",
+    name: "پالتو بلند شتری زنانه مدل ۷۱۳۰",
+    category: "women",
+    price: 6900000,
+    oldPrice: 7800000,
+    images: ["assets/img/women-coat.jpg"],
+    colors: ["camel", "cream", "black"],
+    sizes: SIZE_SETS.clothing,
+    rating: 4.8,
+    reviews: 27,
+    sales: 74,
+    addedAt: "2026-11-19",
+    material: "مخلوط پشم",
+    fit: "راسته",
+    desc: "پالتوی بلند زنانه با یقه‌ی انگلیسی و آستر کامل، فرمی مرتب و زنانه دارد. رنگ شتری خنثی آن با شلوار تیره و روشن هماهنگ می‌شود."
+  },
+
+  /* ---------- بچگانه ---------- */
+  {
+    id: "kids-tshirt",
+    name: "تیشرت نخی بچگانه مدل ۸۱۰۴",
+    category: "kids",
+    price: 690000,
+    oldPrice: 850000,
+    images: ["assets/img/kids-tshirt.jpg"],
+    colors: ["sage", "white", "navy"],
+    sizes: SIZE_SETS.kids,
+    rating: 4.5,
+    reviews: 41,
+    sales: 230,
+    addedAt: "2026-11-22",
+    material: "پنبه ۱۰۰٪",
+    fit: "راحت",
+    desc: "تیشرت بچگانه با پنبه‌ی نرم و یقه‌ی کشباف که فرم خود را حفظ می‌کند. دوخت لبه‌ها بدون پیچش است و برای بازی روزمره راحت است."
+  },
+  {
+    id: "kids-hoodie",
+    name: "هودی بچگانه سرمه‌ای مدل ۸۱۱۷",
+    category: "kids",
+    price: 1450000,
+    oldPrice: 1690000,
+    images: ["assets/img/kids-hoodie.jpg"],
+    colors: ["navy", "grey", "black"],
+    sizes: SIZE_SETS.kids,
+    rating: 4.6,
+    reviews: 33,
+    sales: 158,
+    addedAt: "2026-11-21",
+    material: "پنبه‌ی مولتون",
+    fit: "راحت",
+    desc: "هودی بچگانه با پارچه‌ی مولتون نرم در داخل و کلاه دو لایه. کشباف مقاوم و رنگ سرمه‌ای ثابت، برای روزهای خنک مدرسه مناسب است."
+  },
+  {
+    id: "kids-jeans",
+    name: "شلوار جین بچگانه مدل ۸۱۲۵",
+    category: "kids",
+    price: 1190000,
+    oldPrice: 1390000,
+    images: ["assets/img/kids-jeans.jpg"],
+    colors: ["denim", "navy"],
+    sizes: SIZE_SETS.kids,
+    rating: 4.4,
+    reviews: 29,
+    sales: 121,
+    addedAt: "2026-11-20",
+    material: "جین پنبه‌ای",
+    fit: "راسته",
+    desc: "شلوار جین بچگانه با کمر کشی و بند تنظیم، آزادی حرکت کاملی می‌دهد. پارچه‌ی مقاوم آن برای استفاده‌ی روزمره و مدرسه ساخته شده است."
   }
 ];
 

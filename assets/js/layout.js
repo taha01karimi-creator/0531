@@ -13,7 +13,8 @@ const NAV_LINKS = [
   { href: "shop.html?cat=sweat", label: "سویشرت", page: "sweat" },
   { href: "shop.html?cat=pants", label: "شلوار", page: "pants" },
   { href: "shop.html?cat=outer", label: "پالتو", page: "outer" },
-  { href: "shop.html?cat=accessory", label: "اکسسوری", page: "accessory" }
+  { href: "shop.html?cat=accessory", label: "اکسسوری", page: "accessory" },
+  { href: "contact.html", label: "تماس", page: "contact" }
 ];
 
 const LOGO_MARK =
@@ -74,6 +75,8 @@ const FOOTER_HTML =
   '<ul class="footer__list">' +
   '<li><a href="index.html">صفحه اصلی</a></li>' +
   '<li><a href="shop.html">همهٔ محصولات</a></li>' +
+  '<li><a href="shop.html?cat=women">زنانه</a></li>' +
+  '<li><a href="shop.html?cat=kids">بچگانه</a></li>' +
   '<li><a href="shop.html?cat=polo">پولوشرت</a></li>' +
   '<li><a href="shop.html?cat=shirt">پیراهن</a></li>' +
   '<li><a href="shop.html?cat=outer">پالتو و کاپشن</a></li>' +
@@ -83,6 +86,7 @@ const FOOTER_HTML =
   '<h3 class="footer__title">خدمات مشتریان</h3>' +
   '<ul class="footer__list">' +
   '<li><a href="shop.html">راهنمای خرید</a></li>' +
+  '<li><a href="contact.html">تماس با ما</a></li>' +
   '<li><a href="cart.html">سبد خرید</a></li>' +
   '<li><span>شرایط بازگشت کالا</span></li>' +
   '<li><span>سوالات متداول</span></li>' +

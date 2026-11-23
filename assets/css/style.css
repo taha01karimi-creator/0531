@@ -3612,6 +3612,78 @@ html.motion-on .media-anim.is-ready {
   transition: opacity 0.85s var(--ease);
 }
 
+/* --- بخش‌های زنانه و بچگانه --- */
+.cats--two {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.cats--two .cat,
+.cats--two .cat:first-child {
+  grid-row: auto;
+  min-height: 260px;
+}
+
+/* --- صفحهٔ تماس --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.contact-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.contact-card__label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.contact-card__value {
+  font-size: 21px;
+  font-weight: 700;
+  direction: ltr;
+  text-align: right;
+}
+
+.contact-card__hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.contact-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .cats--two,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cats--two .cat,
+  .cats--two .cat:first-child {
+    min-height: 200px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.motion-on [data-reveal],
   html.motion-on .media-anim {
