@@ -17,13 +17,13 @@ const NAV_LINKS = [
 ];
 
 const LOGO_MARK =
-  '<img src="assets/img/titi2-logo.webp" alt="لوگوی TiTi2" width="46" height="46">' +
-  '<span class="logo__text">TITI2<small>پوشاک مردانه</small></span>';
+  '<img src="assets/img/codelaine-logo.webp" alt="لوگوی کدلاین" width="46" height="46">' +
+  '<span class="logo__text">CODELAINE<small>توسعهٔ وب و ربات</small></span>';
 
 const HEADER_HTML =
   '<header class="header">' +
   '<div class="container header__inner">' +
-  '<a class="logo" href="index.html" aria-label="TiTi2، صفحه اصلی">' + LOGO_MARK + "</a>" +
+  '<a class="logo" href="index.html" aria-label="کدلاین، صفحه اصلی">' + LOGO_MARK + "</a>" +
   '<nav class="mainnav" aria-label="منوی اصلی">' +
   '<ul class="mainnav__list">' +
   NAV_LINKS.map(function (link) {
@@ -50,7 +50,7 @@ const SEARCH_HTML =
   '<div class="search__panel" role="dialog" aria-label="جستجوی محصولات">' +
   '<div class="search__head">' +
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg>' +
-  '<input class="search__input" type="search" placeholder="جستجو در محصولات TiTi2…" aria-label="عبارت جستجو">' +
+  '<input class="search__input" type="search" placeholder="جستجو در محصولات کدلاین…" aria-label="عبارت جستجو">' +
   '<button class="search__close" type="button">بستن (Esc)</button>' +
   "</div>" +
   '<div class="search__results"></div>' +
@@ -80,7 +80,7 @@ const FOOTER_HTML =
   '<div class="container">' +
   '<div class="footer__grid">' +
   "<div>" +
-  '<a class="logo" href="index.html" aria-label="TiTi2">' + LOGO_MARK + "</a>" +
+  '<a class="logo" href="index.html" aria-label="کدلاین">' + LOGO_MARK + "</a>" +
   '<p class="footer__about">کدلاین یک استودیوی برنامه‌نویسی است که ربات و سایت اختصاصی می‌سازد. این فروشگاه هم فقط به‌عنوان نمونه‌کار طراحی و توسعهٔ وب ساخته شده است.</p>' +
   '<div class="socials">' +
   '<a href="https://instagram.com/codelaine_dev" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام کدلاین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>' +
