@@ -148,19 +148,19 @@ whenCatalogReady(function () {
       titleEl.textContent = title;
       crumbEl.textContent = title;
       descEl.textContent = "محصولات دستهٔ «" + title + "»؛ همه با ارسال سریع و امکان بازگشت تا ۷ روز.";
-      document.title = title + " | کدلاین";
+      document.title = title + " | TiTi2";
     } else if (state.search) {
       const title = "نتایج «" + state.search + "»";
       titleEl.textContent = title;
       crumbEl.textContent = title;
       descEl.textContent = "محصولاتی که با عبارت جستجو هم‌خوانی دارند؛ برای محدودتر کردن، از فیلترها استفاده کنید.";
-      document.title = title + " | کدلاین";
+      document.title = title + " | TiTi2";
     } else {
       titleEl.textContent = "همهٔ محصولات";
       crumbEl.textContent = "همهٔ محصولات";
       descEl.textContent =
         "پوشاک مردانه، زنانه و بچگانه با پارچه‌های طبیعی. برای پیدا کردن سریع‌تر، از فیلترهای سمت راست استفاده کنید.";
-      document.title = "فروشگاه | کدلاین";
+      document.title = "فروشگاه | TiTi2";
     }
   }
 

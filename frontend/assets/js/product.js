@@ -23,7 +23,7 @@ whenCatalogReady(function () {
   const color = product.colors[0];
   const size = product.sizes[0];
 
-  document.title = product.name + " | کدلاین";
+  document.title = product.name + " | TiTi2";
   const crumb = document.querySelector("[data-crumb-product]");
   if (crumb) crumb.textContent = product.name;
 
@@ -35,7 +35,7 @@ whenCatalogReady(function () {
     image: [product.images[0]],
     description: product.desc,
     category: categoryTitle(product.category),
-    brand: { "@type": "Brand", name: "کدلاین" }
+    brand: { "@type": "Brand", name: "TiTi2" }
   };
   const schemaScript = document.createElement("script");
   schemaScript.type = "application/ld+json";
