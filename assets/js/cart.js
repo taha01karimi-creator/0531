@@ -116,7 +116,7 @@ whenCatalogReady(function () {
     totalEl.textContent = toman(total);
 
     if (subtotal >= FREE_SHIPPING_FROM) {
-      shippingBar.textContent = "ارسال این سفارش رایگان است ✓";
+      shippingBar.textContent = "ارسال این سفارش رایگان است";
     } else {
       shippingBar.textContent =
         toman(FREE_SHIPPING_FROM - subtotal) +

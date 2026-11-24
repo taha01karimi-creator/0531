@@ -510,7 +510,7 @@ function initHeader() {
       writeStore(ACCOUNT_KEY, phone);
       refreshAccount();
       closeLogin();
-      showToast("خوش آمدید 👋");
+      showToast("خوش آمدید");
     });
   }
 

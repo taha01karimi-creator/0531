@@ -26,10 +26,10 @@
   };
 
   var NAV = [
-    ["dashboard", "📊", "داشبورد"],
-    ["products", "🛍️", "محصولات"],
-    ["orders", "📦", "سفارش‌ها"],
-    ["settings", "⚙️", "تنظیمات"]
+    ["dashboard", "داشبورد"],
+    ["products", "محصولات"],
+    ["orders", "سفارش‌ها"],
+    ["settings", "تنظیمات"]
   ];
 
   var state = {
@@ -267,11 +267,9 @@
         item[0] +
         '" class="' +
         (state.page === item[0] ? "on" : "") +
-        '"><span>' +
+        '">' +
         item[1] +
-        "</span><span>" +
-        item[2] +
-        "</span></button>"
+        "</button>"
       );
     }).join("");
 
@@ -286,8 +284,8 @@
       navHtml +
       "</nav>" +
       '<div class="adm-side__foot">' +
-      '<a href="index.html">🏬 دیدن فروشگاه</a>' +
-      '<button type="button" data-act="logout">🚪 خروج</button>' +
+      '<a href="index.html">دیدن فروشگاه</a>' +
+      '<button type="button" data-act="logout">خروج</button>' +
       "</div>" +
       "</aside>" +
       '<main class="adm-main" id="admMain"></main>' +
@@ -567,7 +565,7 @@
     closeModal();
     await loadProducts();
     renderPage();
-    toast("محصول ذخیره شد ✓");
+    toast("محصول ذخیره شد");
   }
 
   async function deleteProduct(id) {
@@ -726,7 +724,7 @@
       return item.code === code;
     })[0];
     if (order) order.status = status;
-    toast("وضعیت سفارش به‌روز شد ✓");
+    toast("وضعیت سفارش به‌روز شد");
     if (state.page === "dashboard") {
       await loadDashboard();
       renderPage();
@@ -812,7 +810,7 @@
     }
     state.settings = result.data.settings;
     renderPage();
-    toast("تنظیمات ذخیره شد ✓");
+    toast("تنظیمات ذخیره شد");
   }
 
   
