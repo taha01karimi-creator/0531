@@ -11,7 +11,7 @@
 ## آدرس‌ها
 
 - سایت: <https://taha01karimi-creator.github.io/0531/>
-- مخزن: <https://github.com/taha01karimi-creator/0531>
+- مخزن: <https://github.com/taha01karimi-creator/titi-shop>
 
 ## اجرای بک‌اند
 
