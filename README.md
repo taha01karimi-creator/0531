@@ -6,7 +6,7 @@
 
 - `frontend/` — همهٔ صفحه‌ها، استایل‌ها، اسکریپت‌ها و تصاویر سایت (خروجی GitHub Pages)
 - `backend/` — API و مدیریت محصولات با Flask
-- `.github/workflows/pages.yml` — انتشار خودکار `frontend/` روی GitHub Pages
+- شاخهٔ `gh-pages` — نسخهٔ منتشرشدهٔ `frontend/` برای GitHub Pages
 
 ## آدرس‌ها
 

@@ -9,9 +9,9 @@ from api import bp as api_bp
 from config import Config
 from db import init_db
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parent.parent / "frontend"
 
-PAGES = {"index.html", "shop.html", "product.html", "cart.html", "admin.html"}
+PAGES = {"index.html", "shop.html", "product.html", "cart.html", "admin.html", "about.html", "contact.html", "help.html", "404.html"}
 ASSET_DIRS = {"css", "js", "img", "fonts"}
 
 def _no_cache(response):
