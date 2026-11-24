@@ -147,7 +147,7 @@
     root.innerHTML =
       '<div class="adm-login">' +
       '<form class="adm-login__card" id="loginForm" autocomplete="on">' +
-      '<p class="adm-login__brand">CODELAINE</p>' +
+      '<p class="adm-login__brand">TITI2</p>' +
       "<h1>پنل مدیریت فروشگاه</h1>" +
       '<p class="muted">برای مدیریت محصول‌ها، سفارش‌ها و تنظیمات وارد شوید.</p>' +
       '<label class="adm-field"><span>نام کاربری</span>' +
@@ -278,7 +278,7 @@
     root.innerHTML =
       '<div class="adm-shell">' +
       '<aside class="adm-side">' +
-      '<div class="adm-side__brand">CODELAINE</div>' +
+      '<div class="adm-side__brand">TITI2</div>' +
       '<div class="adm-side__user">' +
       esc((state.user && state.user.title) || "مدیر فروشگاه") +
       "</div>" +
