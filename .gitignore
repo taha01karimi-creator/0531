@@ -1,8 +1,7 @@
-# داده‌ها و تنظیمات محلی بک‌اند
-backend/.env
-backend/data/shop.db
-backend/data/shop.db-journal
-backend/data/secret_key
+# دادهٔ محلی بک‌اند
+backend/data/*
+!backend/data/products.json
+!backend/data/settings.json
 
 # پایتون
 __pycache__/
@@ -13,6 +12,3 @@ venv/
 # سیستم‌عامل
 .DS_Store
 Thumbs.db
-
-# رمز ساخته‌شدهٔ مدیر (خصوصی)
-backend/data/admin_password.txt
